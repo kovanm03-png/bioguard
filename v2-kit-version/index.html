@@ -1,0 +1,407 @@
+<!doctype html>
+<!-- type: place (a supplement and gym store people walk into).
+     plan line 2: palette = the client's own (logo green #1b7a43 on a warm bone ground #f2efe7, near-black green ink);
+       figtree; radius square on a place; buttons block; nav plain words; footer-visit; rhythm surface-pairs;
+       offer = goods (four open tiles); place = story 6/6; type moment = name (close-word);
+       moment = photo-chapters (a training day in four chapters). -->
+<html lang="en" dir="ltr" data-type="place" data-radius="soft" data-buttons="block" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bio Guard: gym supplement store in Sulaymaniyah</title>
+<meta name="description" content="Raw Nutrition, Yamamoto and Alpha Lion protein, pre-workout and lifting gear in Ashti, near the Blind School. Open every day.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bio Guard: gym supplement store in Sulaymaniyah">
+<meta property="og:description" content="Protein, pre-workout and lifting gear in Ashti. Open every day from 10:00 to 23:00.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="img/icon.png" type="image/png">
+<meta name="theme-color" content="#f2efe7">
+<!-- <link rel="canonical" href="https://[the client's domain]/"> -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="place">
+<meta name="page-kind" content="place">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..600&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<style>
+:root {
+  --p-bg: #f2efe7; --p-surface: #e5e3db; --p-ink: #141c17; --p-muted: #5f645e;
+  --p-accent: #1b7a43; --p-accent-ink: #f2efe7; --p-action: #1b7a43; --p-action-ink: #f2efe7;
+  --p-inv-bg: #141c17; --p-inv-surface: #212823; --p-inv-ink: #f2efe7; --p-inv-muted: #959790;
+  --p-inv-accent: #1b7a43; --p-inv-accent-ink: #f2efe7; --p-inv-action: #1b7a43; --p-inv-action-ink: #f2efe7;
+  --font-display: "Figtree", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.025em;
+}
+#products .mo-ph__head{margin-bottom:var(--s-7)}
+#products .mo-ph__head p{margin-top:var(--s-3);color:var(--muted)}
+#products .mo-ph__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-7) var(--s-6)}
+#products .mo-ph__ch{display:flex;flex-direction:column;gap:var(--s-3);min-width:0}
+#products .mo-ph__pic{margin:0;overflow:hidden;border-radius:var(--r-lg,12px)}
+#products .mo-ph__pic img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+#products .mo-ph__ch h3{margin:var(--s-2) 0 0;font-family:var(--font-display);font-weight:400;font-size:var(--t-h3,28px);line-height:1.15}
+#products .mo-ph__ch p{margin:0;color:var(--muted);max-width:44ch}
+@media (max-width:719px){#products .mo-ph__list{grid-template-columns:1fr}}</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<style>
+/* page CSS: the client's logo in the bar, the photo wall, the customer messages and Kurdish (right to left) */
+.nav__logo img { width: 36px; height: 36px; border-radius: 50%; display: block; }
+.nav__logo { gap: var(--s-3); }
+.lang { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }
+
+.wall { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2px; }
+.wall img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+
+.voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); }
+.voice { display: block; width: 100%; padding: 0; border: 0; background: var(--surface); cursor: zoom-in; overflow: hidden; aspect-ratio: 4 / 5; transition: transform 200ms var(--ease); }
+.voice img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 600ms var(--ease); }
+@media (hover: hover) and (pointer: fine) { .voice:hover { transform: translateY(-2px); } .voice:hover img { transform: scale(1.03); } }
+dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: min(94vw, 720px); max-height: 94vh; margin: auto; overflow: visible; }
+dialog.lightbox::backdrop { background: rgba(10, 16, 12, .86); }
+dialog.lightbox img { display: block; max-height: 88vh; width: auto; max-width: 100%; margin: 0 auto; }
+dialog.lightbox button { position: absolute; top: -52px; inset-inline-end: 0; width: 44px; height: 44px; border: 0; background: var(--p-bg); color: var(--p-ink); font: 400 28px/1 var(--font-text); cursor: pointer; }
+
+.branches { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); list-style: none; margin: 0; padding: 0; }
+.branches a { display: inline-flex; align-items: center; min-height: 44px; }
+.mo-wh__plain { display: none; }
+html[data-buttons] .btn.btn--secondary { padding-inline: 0; }
+.visit__head { flex-direction: column; align-items: flex-start; gap: var(--s-2); }
+#visit .pl-photo > a { display: block; overflow: hidden; transition: transform 200ms var(--ease); }
+#visit .pl-photo > a img { transition: transform 600ms var(--ease); }
+@media (hover: hover) and (pointer: fine) { #visit .pl-photo > a:hover { transform: translateY(-2px); } #visit .pl-photo > a:hover img { transform: scale(1.03); } }
+.visit__address a { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 4px; text-decoration-thickness: 1px; transition: text-decoration-color 200ms var(--ease); }
+.visit__address a:hover { text-decoration-color: currentColor; }
+#visit .pl-photo { --pl-r: 1; }
+#story .pl-photo { --pl-r: .75; }
+
+@media (max-width: 1023px) {
+  .wall { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .visit__head { flex-direction: column; align-items: flex-start; gap: var(--s-2); }
+  .voice { aspect-ratio: 2 / 5; }
+}
+/* the narrow desktop (1024 to 1279): taller pictures keep each screen full */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .wall img { aspect-ratio: 2 / 3; }
+  .voice { aspect-ratio: 3 / 5; }
+  #products .tile { --tile-ratio: 5 / 7; }
+  #visit .pl-photo { --pl-r: 1.25; }
+  #visit .visit__cols { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 639px) {
+  .wall { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .voices { grid-template-columns: minmax(0, 1fr); }
+  .voice { aspect-ratio: 4 / 5; }
+}
+
+/* Kurdish Sorani: right to left, an Arabic-script face, no tracking, taller lines */
+[dir="rtl"] { --font-display: "Noto Sans Arabic", system-ui, sans-serif; --font-text: "Noto Sans Arabic", system-ui, sans-serif; --display-weight: 500; --display-tracking: 0; }
+[dir="rtl"] * { letter-spacing: 0 !important; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 { line-height: 1.4; }
+[dir="rtl"] .hero-text p, [dir="rtl"] .hero__lead, [dir="rtl"] .section-head p { line-height: 1.8; }
+[dir="rtl"] [data-open-now] { display: none; }
+[dir="rtl"] .mo-wh__text { display: none; }
+[dir="rtl"] .mo-wh__plain { display: block; }
+[dir="rtl"] .pl-photo--end > img { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .visit__rows > li > :last-child { text-align: left; }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+[dir="rtl"] .mo-ph__count { direction: ltr; unicode-bidi: isolate; text-align: right; }
+
+/* intro: description and the names we stock */
+.intro__top{max-width:62rem}
+.intro__kicker{margin:0 0 var(--s-4);font:500 var(--t-small,14px)/1 var(--font-text);letter-spacing:.08em;text-transform:uppercase;color:var(--p-accent)}
+.intro h2{font-size:clamp(34px,5.4vw,76px);line-height:1.04;margin:0 0 var(--s-5)}
+.intro__lead{max-width:46rem;margin:0}
+.intro__brands{list-style:none;margin:var(--s-7) 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s-3)}
+.ib{display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:var(--s-4);border-radius:var(--r-md,10px);transition:transform 200ms var(--ease)}
+.ib__n{font:500 14px/1 var(--font-text);opacity:.7;font-variant-numeric:tabular-nums}
+.ib__name{font:400 clamp(22px,2.3vw,34px)/1.05 var(--font-display);letter-spacing:var(--display-tracking)}
+.ib--green{background:var(--p-accent);color:#f2efe7}
+.ib--ink{background:var(--p-inv-bg);color:#f2efe7}
+.ib--sand{background:var(--p-surface);color:var(--p-ink)}
+.ib--line{border:1.5px solid var(--p-ink);color:var(--p-ink)}
+@media (hover:hover){.ib:hover{transform:translateY(-3px)}}
+.intro__chips{list-style:none;margin:var(--s-5) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--s-2)}
+.intro__chips li{padding:8px 14px;border-radius:999px;background:var(--p-surface);font:400 15px/1.2 var(--font-text)}
+@media (max-width:1023px){.intro__brands{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1023px){.ib:last-child{grid-column:span 2}}
+@media (max-width:639px){.intro__brands{grid-template-columns:repeat(2,minmax(0,1fr))}.ib{min-height:120px}.ib:last-child{grid-column:1/-1}}
+
+/* find us: map and every contact, last on the page */
+.find{background:var(--p-inv-bg);color:#f2efe7;padding-block:var(--s-9,96px) var(--s-6)}
+.find a{color:inherit}
+.find .btn--primary{background:var(--p-accent);color:#f2efe7}
+.find__head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--s-5);margin-bottom:var(--s-7)}
+.find__head h2{font-size:clamp(36px,5.5vw,80px);line-height:1.04;margin:0 0 var(--s-3)}
+.find__head p{margin:0;opacity:.8}
+.find__grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--s-7);align-items:start}
+.find__map{display:block;overflow:hidden;border-radius:var(--r-lg,14px);border:2px solid var(--p-accent)}
+.find__map img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 600ms var(--ease)}
+@media (hover:hover){.find__map:hover img{transform:scale(1.03)}}
+.find__maplink{display:inline-block;margin-top:var(--s-3)}
+.find__info{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-6) var(--s-5)}
+.find__block--wide{grid-column:1/-1}
+.find__block h3{margin:0 0 var(--s-3);font:500 13px/1 var(--font-text);letter-spacing:.1em;text-transform:uppercase;color:#7fd39e}
+.find address{font-style:normal;font-size:20px;line-height:1.4}
+.find__rows{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-3)}
+.find__rows li{display:flex;flex-direction:column;gap:2px}
+.find__rows li>span{opacity:.65;font-size:14px}
+.find__rows a,.find__rows .ltr{font-size:20px}
+.find .hours{color:inherit}
+.find .find__block h3{color:#7fd39e!important}
+.find .branches{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:var(--s-2) var(--s-5)}
+.find .branches li{margin:0;width:auto}
+.find .branches a{min-height:44px;font-size:18px}
+.find .branches a{text-decoration:underline;text-underline-offset:4px}
+.find .close__word{font:400 clamp(64px,17vw,280px)/.85 var(--font-display);letter-spacing:-.04em;margin:var(--s-8,72px) 0 var(--s-5);color:var(--p-accent);overflow:hidden;white-space:nowrap}
+.find .footer__legal{border-top:1px solid rgba(242,239,231,.25);padding-top:var(--s-4);display:flex;flex-wrap:wrap;gap:var(--s-4);font-size:14px;opacity:.8}
+@media (max-width:899px){.find__grid{grid-template-columns:1fr}}
+@media (max-width:519px){.find__info{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top" data-i="skip">Skip to content</a>
+    <a class="nav__logo" href="#top"><img src="img/logo.png" alt="" width="36" height="36">Bio Guard</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="#contact" data-i="n1">Visit</a></div>
+      <div class="nav__item"><a class="nav__link" href="#products" data-i="n2">Products</a></div>
+      <div class="nav__item"><a class="nav__link" href="#customers" data-i="n3">Customers</a></div>
+    </nav>
+    <div class="nav__actions">
+      <button class="nav__link lang" id="lang" type="button" lang="ckb" aria-label="Kurdish">کوردی</button>
+      <a class="btn btn--primary" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="dir">Get directions</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--place" data-enter aria-labelledby="hero-h">
+    <img class="hero__bg" data-phone-fill src="img/hero-wall.jpg" alt="Five tubs from the shelves: Alpha Lion Superhuman protein, Raw Bum pre-workout, Raw isolate protein, Raw EAA and Raw Bum Itholate protein" style="--ly-pos: 50% 50%" fetchpriority="high">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <h1 id="hero-h" data-i="h1">Gym supplement store in Sulaymaniyah</h1>
+        <p class="hero__lead" data-i="lead">Protein, pre-workout and lifting gear, open every day from 10:00 to 23:00.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8"><span data-i="dir">Get directions</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section intro" id="visit" aria-labelledby="intro-h">
+    <div class="wrap">
+      <div class="intro__top">
+        <p class="intro__kicker"><span data-i="ik">Since 2004 &middot; Ashti, Sulaymaniyah</span></p>
+        <h2 id="intro-h" data-i="ih">Everything you need to train, under one roof.</h2>
+        <p class="intro__lead t-lead" data-i="ip">Bio Guard is a supplement and lifting store in Sulaymaniyah. We stock protein, pre-workout, creatine, aminos and sleep support from the brands lifters ask for, and our coaches work with you online. Come in, ask at the counter, and leave with what fits your goal and your budget.</p>
+      </div>
+      <ul class="intro__brands">
+        <li class="ib ib--green"><span class="ib__n">01</span><span class="ib__name">Raw Nutrition</span></li>
+        <li class="ib ib--ink"><span class="ib__n">02</span><span class="ib__name">Alpha Lion</span></li>
+        <li class="ib ib--sand"><span class="ib__n">03</span><span class="ib__name">Yamamoto</span></li>
+        <li class="ib ib--line"><span class="ib__n">04</span><span class="ib__name" data-i="gear">Lifting gear</span></li>
+        <li class="ib ib--line"><span class="ib__n">05</span><span class="ib__name" data-i="cok">Online coaching</span></li>
+      </ul>
+      <ul class="intro__chips" aria-label="Products">
+        <li>Raw Bum Thavage</li><li>Raw Bum Itholate</li><li>Raw Isolate</li><li>Raw Vegan Protein</li><li>Raw EAA</li><li>Raw Creatine</li><li>Raw Sleep</li><li>Raw Burn</li><li>Superhuman</li><li>Superhuman Post</li><li>Superhuman Intra</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- photo-chapters moment: a training day in four chapters, one wide photograph each (none used elsewhere) -->
+  <section class="section" id="products" style="--hm: 2" aria-labelledby="products-h">
+    <div class="wrap mo-ph">
+      <div class="mo-ph__head"><h2 id="products-h" data-i="ph">A training day on our shelves</h2><p data-i="pp">What we stock, in the order you use it.</p></div>
+      <ol class="mo-ph__list">
+        <li class="mo-ph__ch">
+          <figure class="mo-ph__pic"><img src="img/day1.jpg" alt="Three Raw Bum Thavage pre-workout tubs in Dragon Fruit, Rocket Candy and Peach Bum" width="1800" height="900"></figure>
+          <h3 data-i="c1h">Pre-workout</h3>
+          <p data-i="c1p">Raw Bum Thavage in Dragon Fruit, Rocket Candy and Peach Bum, to take before you train.</p>
+        </li>
+        <li class="mo-ph__ch">
+          <figure class="mo-ph__pic"><img src="img/day2.jpg" alt="Raw creatine monohydrate and Raw EAA in Kiwi Blueberry" width="1800" height="900"></figure>
+          <h3 data-i="c2h">Creatine and aminos</h3>
+          <p data-i="c2p">Raw creatine monohydrate and Raw EAA in Kiwi Blueberry, for every day of training.</p>
+        </li>
+        <li class="mo-ph__ch">
+          <figure class="mo-ph__pic"><img src="img/day3.jpg" alt="Raw Bum Itholate in Mint Chip Ice Cream, Raw whey isolate and Raw vegan protein" width="1800" height="900"></figure>
+          <h3 data-i="c3h">Protein</h3>
+          <p data-i="c3p">Raw isolate and vegan protein, and Raw Bum Itholate in Mint Chip Ice Cream, for after you train.</p>
+        </li>
+        <li class="mo-ph__ch">
+          <figure class="mo-ph__pic"><img src="img/day4.jpg" alt="Raw Sleep tubs in Strawberry Kiwi and Mixed Berry" width="1800" height="900"></figure>
+          <h3 data-i="c4h">Sleep</h3>
+          <p data-i="c4p">Raw Sleep in Strawberry Kiwi and Mixed Berry, for the end of the day.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="story" aria-labelledby="story-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6 stack-5">
+        <h2 id="story-h" data-i="oh">Serving Sulaymaniyah since 2004</h2>
+        <p class="t-lead" data-i="o1">Bio Guard has sold supplements and training gear in Sulaymaniyah since 2004. Ask at the counter what fits your goal and budget.</p>
+        <p class="t-lead" data-i="o2">Customers rate us 4.8 on Google, and 49.9K people follow our Instagram page.</p>
+        <p class="t-lead" data-i="o3">Not in Sulaymaniyah? Our coaches work with you online.</p>
+        <p><a class="link" href="tel:07701981606" data-i="cocall">Call the coaching line</a> &nbsp; <a class="link" href="https://instagram.com/bioguardsuly" data-i="olink">Message us on Instagram</a></p>
+      </div>
+      <figure class="pl-photo pl-photo--end span-6 start-7"><img src="img/store43.jpg" alt="Tubs stacked in a pyramid beside shelves of supplements in the Bio Guard store" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <section class="section" id="customers" style="--hm: 2" aria-labelledby="customers-h">
+    <div class="wrap">
+      <div class="section-head--split">
+        <div><h2 id="customers-h" data-i="ch">What customers write to us</h2><p data-i="cp">Messages and story replies, shown as they were sent.</p></div>
+      </div>
+      <div class="voices">
+        <button type="button" class="voice" aria-label="Open this customer message" data-i-label="open"><img src="img/f1.jpg" alt="A customer message in Kurdish praising the store's advice on protein" loading="lazy"></button>
+        <button type="button" class="voice" aria-label="Open this customer message" data-i-label="open"><img src="img/f2.jpg" alt="A customer message in Kurdish about losing 9 kilos in a month with Raw Burn" loading="lazy"></button>
+        <button type="button" class="voice" aria-label="Open this customer message" data-i-label="open"><img src="img/f3.jpg" alt="A customer message about supplements for a 12th grade student's focus and memory" loading="lazy"></button>
+      </div>
+      <dialog class="lightbox" id="lb" aria-label="Customer message"><button type="button" id="lbx" aria-label="Close">×</button><img alt=""></dialog>
+    </div>
+  </section>
+
+  </main>
+
+<footer class="footer find" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="find__head">
+      <div><h2 id="close-h" data-i="fh">Come to Ashti</h2><p class="t-lead" data-i="fl">Open every day, 10:00 to 23:00.</p></div>
+      <a class="btn btn--primary" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8"><span data-i="dir">Get directions</span><svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="find__grid">
+      <div class="find__mapwrap">
+        <a class="find__map" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" aria-label="Open the Bio Guard pin in Google Maps"><img src="img/map11.jpg" alt="Map with the Bio Guard pin in Ashti, near Zagros Street, Sulaymaniyah" loading="lazy"></a>
+        <a class="find__maplink link" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="fmap">Open in Google Maps</a>
+      </div>
+      <div class="find__info">
+        <div class="find__block">
+          <h3 data-i="fa">Address</h3>
+          <address data-i="addr">Ashti, near the Blind School<br>Sulaymaniyah</address>
+        </div>
+        <div class="find__block">
+          <h3 data-i="fhrs">Opening hours</h3>
+          <dl class="hours" data-tz="Asia/Baghdad"><dt data-days="mon-sun" data-i="every">Every day</dt><dd data-i="hrs">10:00 to 23:00</dd></dl>
+          <p class="t-small" data-open-now></p>
+        </div>
+        <div class="find__block">
+          <h3 data-i="fp">Call</h3>
+          <ul class="find__rows">
+            <li><span data-i="fstore">Store</span><a class="ltr" href="tel:07701637711">0770 163 7711</a></li>
+            <li><span data-i="coachline">Coaching line</span><a class="ltr" href="tel:07701981606">0770 198 1606</a></li>
+          </ul>
+        </div>
+        <div class="find__block">
+          <h3 data-i="fs">Follow</h3>
+          <ul class="find__rows">
+            <li><span>Instagram</span><a class="ltr" href="https://instagram.com/bioguardsuly">@bioguardsuly</a></li>
+            <li><span data-i="frate">Google rating</span><span class="ltr">4.8 &#9733; &middot; 49.9K</span></li>
+          </ul>
+        </div>
+        <div class="find__block find__block--wide">
+          <h3 data-i="fbr">Other branches</h3>
+          <ul class="branches">
+            <li><a class="link" href="https://instagram.com/bioguard.iq" data-i="b2">Erbil</a></li>
+            <li><a class="link" href="https://instagram.com/bioguard_newroz" data-i="b3">Erbil Newroz</a></li>
+            <li><a class="link" href="https://instagram.com/bioguard_duhok" data-i="b4">Duhok</a></li>
+            <li><a class="link" href="https://instagram.com/bioguard.iraq" data-i="b5">Baghdad</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="close__word" aria-hidden="true">Bio Guard</p>
+    <div class="footer__legal">
+      <span>&copy; 2026 Bio Guard</span>
+      <details class="credits"><summary>Product names and logos belong to their owners. Map from Google Maps.</summary><p>Raw Nutrition, Raw Bum, Yamamoto and Alpha Lion are trademarks of their owners. The map image is from Google Maps.</p></details>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="btn btn--secondary" href="tel:07701637711" data-i="mc">Call</a>
+  <a class="btn btn--primary" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="dir">Get directions</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+/* English lives in the HTML. Kurdish Sorani strings are keyed by data-i. */
+var CKB={
+ik:"٢٠٠٤ ەوە · ئاشتی، سلێمانی",ih:"هەموو ئەوەی بۆ ڕاهێنان پێویستتە، لە یەک شوێندا.",ip:"بایۆگارد فرۆشگای ماددەی خۆراکی و کەرەستەی بەهێزکردنە لە سلێمانی. پرۆتین، پێش ڕاهێنان، کرێئەتین، ئەمینۆ و ماددەی خەو لەو براندانە دابین دەکەین کە ڕاهێنەران داوایان دەکەن، و ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن. وەرە، لە دووکانەکە بپرسە، و ئەوە ببە کە دەگونجێت لەگەڵ ئامانج و بودجەکەت.",gear:"کەرەستەی بەهێزکردن",fa:"ناونیشان",fp:"پەیوەندی",fstore:"فرۆشگا",fs:"شوێنکەوتن",frate:"هەڵسەنگاندنی گووگڵ",
+skip:"بازدان بۆ ناوەڕۆک",
+n1:"سەردان",n2:"بەرهەمەکان",n3:"کڕیاران",n4:"ڕاهێنان",
+dir:"ڕێنمایی ڕێگا",
+h1:"فرۆشگای ماددەی خۆراکی جیم لە سلێمانی",
+lead:"پرۆتین، پێش ڕاهێنان و کەرەستەی بەهێزکردن، هەموو ڕۆژێک لە 10:00 تا 23:00 کراوەین.",
+vh:"سەردان",
+addr:"ئاشتی، نزیک قوتابخانەی نابینایان<br>سلێمانی",
+call:"پەیوەندی بە فرۆشگاکە بکە",
+every:"هەموو ڕۆژێک",hrs:"10:00 تا 23:00",
+coachline:"هێڵی ڕاهێنان",
+ph:"ڕۆژێکی ڕاهێنان لەسەر ڕەفەکانمان",
+pp:"ئەوەی هەمانە، بەو ڕیزبەندییەی بەکاریدەهێنیت.",
+c1h:"پێش ڕاهێنان",c1p:"Raw Bum Thavage بە تامی Dragon Fruit و Rocket Candy و Peach Bum، بۆ پێش ڕاهێنان.",
+c2h:"کرێئەتین و ئەمینۆ",c2p:"Raw Creatine Monohydrate و Raw EAA بە تامی Kiwi Blueberry، بۆ هەموو ڕۆژێکی ڕاهێنان.",
+c3h:"پرۆتین",c3p:"پرۆتینی ئایسۆلەیت و ڤیگانی Raw، و Raw Bum Itholate بە تامی Mint Chip Ice Cream، بۆ دوای ڕاهێنان.",
+c4h:"خەو",c4p:"Raw Sleep بە تامی Strawberry Kiwi و Mixed Berry، بۆ کۆتایی ڕۆژ.",
+o3:"لە سلێمانی نیت؟ ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن.",
+plink:"هەموو ڕەفەکە ببینە",
+t1:"پرۆتین",t2:"پێش ڕاهێنان",t3:"خەو و ئاسوودەبوونەوە",t4:"کرێئەتین",
+t1p:"وەی ئایسۆلەیت و پرۆتینی ڤیگان لە Raw و Alpha Lion.",
+t2p:"پێش ڕاهێنانی Thavage و Superhuman بە چەندین تام.",
+t3p:"Raw Sleep و Raw EAA و Superhuman Post و Intra.",
+t4p:"کرێئەتین مۆنۆهایدرەیتی Raw، بێ تام.",
+
+slink:"پەیوەندی بکە بۆ دڵنیابوون لە بەرهەم",
+oh:"لە ساڵی 2004 خزمەتی سلێمانی دەکەین",
+o1:"بایۆگارد لە ساڵی 2004 ەوە ماددەی خۆراکی و کەرەستەی ڕاهێنان دەفرۆشێت لە سلێمانی. لە دووکانەکە بپرسە چی گونجاوە بۆ ئامانج و بودجەکەت.",
+o2:"کڕیاران 4.8 نمرەمان پێدەدەن لە گووگڵ، و 49.9K کەس شوێنکەوتووی پەیجی ئینستاگراممانن.",
+olink:"لە ئینستاگرام نامەمان بۆ بنێرە",
+ch:"ئەوەی کڕیاران بۆمان دەنووسن",
+cp:"نامە و وەڵامی ستۆری، هەروەک ناردراون.",
+cok:"ڕاهێنانی ئۆنلاین",
+cocall:"پەیوەندی بە هێڵی ڕاهێنانەوە بکە",
+fh:"وەرە بۆ ئاشتی",
+fl:"هەموو ڕۆژێک کراوەین، 10:00 تا 23:00.",
+faddr:"ئاشتی، سلێمانی",fmap:"نەخشە بکەرەوە",
+fhrs:"کاتی کارکردن",fbr:"لقەکانی تر",
+b2:"هەولێر",b3:"هەولێر نەورۆز",b4:"دهۆک",b5:"بەغدا",
+mc:"پەیوەندی"
+};
+var EN={},btn=document.getElementById('lang');
+document.querySelectorAll('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
+function setLang(l){
+  var k=l==='ckb';
+  document.documentElement.lang=k?'ckb':'en';
+  document.documentElement.dir=k?'rtl':'ltr';
+  document.querySelectorAll('[data-i]').forEach(function(e){var v=(k?CKB:EN)[e.dataset.i];if(v!==undefined)e.innerHTML=v});
+  btn.textContent=k?'English':'کوردی';
+  btn.setAttribute('lang',k?'en':'ckb');
+  btn.setAttribute('aria-label',k?'Switch to English':'Kurdish');
+  try{localStorage.setItem('bg-lang',l)}catch(e){}
+}
+btn.addEventListener('click',function(){setLang(document.documentElement.lang==='ckb'?'en':'ckb')});
+try{if(localStorage.getItem('bg-lang')==='ckb')setLang('ckb')}catch(e){}
+/* customer messages open full size */
+var lb=document.getElementById('lb');
+document.querySelectorAll('.voice').forEach(function(b){b.addEventListener('click',function(){
+  var im=b.querySelector('img'),t=lb.querySelector('img');t.src=im.src;t.alt=im.alt;lb.showModal()})});
+document.getElementById('lbx').addEventListener('click',function(){lb.close()});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+</script>
+</body>
+</html>

@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bio Guard: gym supplement store in Sulaymaniyah</title>
+<meta name="description" content="Bio Guard sells protein, pre-workout and lifting gear in Sulaymaniyah. Open every day, 10:00 to 23:00.">
+<link rel="icon" href="@@icon.png@@">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400..700&family=Noto+Sans+Arabic:wght@400..700&display=swap" rel="stylesheet">
+<script>if('IntersectionObserver' in window)document.documentElement.classList.add('js')</script>
+<style>
+:root{--bg:#f2efe7;--card:#e8e4d8;--paper:#fbf9f3;--ink:#141c17;--muted:#5b625c;--green:#1b7a43;--green-d:#13572f;--mint:#8fd6a9;--r:22px;--gap:20px;
+--display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;--text:"Manrope","Segoe UI",system-ui,sans-serif}
+[dir=rtl]{--display:"Noto Sans Arabic","Segoe UI",system-ui,sans-serif;--text:"Noto Sans Arabic","Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+ul{list-style:none}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.08;letter-spacing:-.02em}
+[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3{line-height:1.45;letter-spacing:0}
+[dir=rtl] *{letter-spacing:0!important}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+section{padding-block:clamp(28px,5vw,56px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;background:var(--green);color:#fff;font:700 16px/1 var(--text);text-decoration:none;border:2px solid var(--green);cursor:pointer;transition:transform .2s,background .2s}
+.btn:hover{background:var(--green-d);transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn--ghost:hover{background:rgba(255,255,255,.12)}
+.eyebrow{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(27,122,67,.14);color:var(--green-d);font:700 13px/1 var(--text);letter-spacing:.06em;text-transform:uppercase}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid rgba(20,28,23,.12)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;font:700 21px/1 var(--display)}
+.logo img{width:40px;height:40px;border-radius:50%}
+nav.links{display:flex;gap:28px}
+nav.links a{text-decoration:none;font-weight:600;font-size:15px}
+nav.links a:hover{color:var(--green)}
+.acts{display:flex;align-items:center;gap:12px}
+.lang{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--ink);background:transparent;font:700 15px/1 var(--text);cursor:pointer;color:var(--ink)}
+.acts .btn{min-height:44px;padding:0 20px;font-size:15px}
+.logo,.acts .btn,nav.links a,.lang{white-space:nowrap}@media(max-width:1000px){nav.links{display:none}}@media(max-width:620px){.acts .btn{display:none}}
+
+/* hero */
+.hero2{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(16px,3vw,44px);align-items:center;border-radius:44px;background:var(--green);color:#fff;overflow:hidden;isolation:isolate;padding:clamp(28px,5vw,64px);min-height:min(700px,90vh)}
+.hero2::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 70% at 85% 25%,rgba(143,214,169,.38),transparent 60%),radial-gradient(rgba(255,255,255,.09) 1.3px,transparent 1.6px) 0 0/24px 24px}
+.hero2__ghost{position:absolute;inset-inline:-3%;bottom:-.17em;z-index:-1;text-align:center;white-space:nowrap;pointer-events:none;font:800 clamp(90px,22vw,330px)/.8 var(--display);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.08);direction:ltr}
+.hero2__text{display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.hero2 h1{font-size:clamp(38px,5.3vw,78px);line-height:1;max-width:12ch}
+[dir=rtl] .hero2 h1{line-height:1.3;max-width:none}
+.hero2 p{font-size:clamp(17px,1.6vw,21px);max-width:30rem;opacity:.95}
+.hero2 .row{display:flex;flex-wrap:wrap;gap:12px}
+.hero2 .btn{background:#fff;color:var(--green-d);border-color:#fff}
+.hero2 .btn:hover{background:var(--mint);border-color:var(--mint)}
+.hero2 .btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.hero2 .btn--ghost:hover{background:rgba(255,255,255,.14)}
+.hero2__stage{position:relative;justify-self:center;width:min(100%,430px)}
+.hero2__win{position:relative;aspect-ratio:4/5;border-radius:999px 999px 40px 40px;overflow:hidden;border:6px solid rgba(255,255,255,.24);box-shadow:0 34px 80px rgba(0,0,0,.38);background:#0d1511;}
+.hero2__win img{position:absolute;top:0;left:50%;height:100%;width:auto;min-width:100%;max-width:none;object-fit:cover;animation:pan 18s ease-in-out 3 alternate;will-change:transform}
+@keyframes pan{from{transform:translateX(-72%)}to{transform:translateX(-28%)}}
+.chip{position:absolute;display:flex;flex-direction:column;gap:2px;padding:12px 18px;border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 14px 34px rgba(0,0,0,.25);animation:bob 5s ease-in-out 4}
+.chip b{font:800 24px/1 var(--display)}
+.chip span{font-size:13px;color:var(--muted);font-weight:600}
+.chip--1{top:6%;inset-inline-start:-10%}
+.chip--2 span{color:var(--ink)}
+.chip--2{top:30%;inset-inline-end:-10%;animation-delay:-1.2s;background:var(--mint)}
+.chip--3{bottom:24%;inset-inline-start:-8%;animation-delay:-2.4s;background:var(--ink);color:#f2efe7}
+.chip--3 span{color:rgba(242,239,231,.7)}
+.chip--4{bottom:6%;inset-inline-end:-10%;animation-delay:-3.4s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
+.hero2__text>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.hero2__text>:nth-child(2){animation-delay:.08s}.hero2__text>:nth-child(3){animation-delay:.16s}.hero2__text>:nth-child(4){animation-delay:.24s}
+@media(max-width:900px){
+ .hero2__win img{animation:none;transform:translateX(-50%)}
+ .tick{transform:none}
+ .hero2{grid-template-columns:1fr;min-height:0}
+ .hero2__stage{width:min(100%,380px);margin-top:12px}
+ .chip{position:static;animation:none;padding:10px 14px}
+ .hero2__chips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+}
+@media(min-width:901px){.hero2__chips{display:contents}}
+
+/* ticker */
+.tick{position:relative;z-index:2;margin:-6px -3vw 0;padding:16px 0;transform:rotate(-1.3deg);background:var(--ink);color:#f2efe7;overflow:hidden;white-space:nowrap;direction:ltr}
+.tick__t{display:inline-flex;animation:tick 55s linear infinite;will-change:transform}
+.tick span{display:inline-flex;align-items:center;gap:44px;padding-inline-end:44px;font:800 clamp(22px,3.2vw,42px)/1 var(--display)}
+.tick span::after{content:"✦";color:var(--mint);font-size:.6em}
+.tick:hover .tick__t,.tick:focus-within .tick__t{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* intro */
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--gap)}
+.panel{background:var(--paper);border-radius:var(--r);padding:clamp(24px,4vw,48px)}
+.panel h2{font-size:clamp(30px,4vw,52px);margin:16px 0 18px}
+.panel p{color:var(--muted);max-width:40rem}
+.panel p+p{margin-top:14px}
+.brands{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.brand{border-radius:var(--r);padding:20px 22px;min-height:132px;display:flex;flex-direction:column;justify-content:space-between}
+.brand i{font:700 13px/1 var(--text);font-style:normal;opacity:.7}
+.brand b{font:700 24px/1.1 var(--display)}
+.b1{background:var(--green);color:#fff}.b2{background:var(--ink);color:#f2efe7}.b3{background:#d9d3c1}.b4{background:var(--mint)}.b5{background:var(--card);grid-column:1/-1;min-height:96px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:var(--gap)}
+.chips li{padding:10px 18px;border-radius:999px;background:var(--card);font:600 15px/1.2 var(--text)}
+@media(max-width:900px){.intro{grid-template-columns:1fr}}
+
+/* section head */
+.head{margin-bottom:28px;max-width:44rem}
+.head h2{font-size:clamp(30px,4vw,52px);margin-bottom:10px}
+.head p{color:var(--muted)}
+
+/* products: a day with Bio Guard (sky and clock follow the scroll) */
+.head h2{font-size:clamp(34px,5vw,68px)}
+.day2{--sky:#f5ecd6;--fg:#141c17;--sub:#4f564f;--pill:rgba(20,28,23,.1);position:relative;border-radius:44px;background:#f5ecd6;color:var(--fg);isolation:isolate;transition:color .35s ease}
+.day2__bg{position:absolute;inset:0;z-index:-1;border-radius:inherit;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.day2__bg1{background:#f5ecd6}.day2__bg2{background:#f1c978}.day2__bg3{background:#1f4a34}.day2__bg4{background:#0b130e}
+.day2[data-step="1"] .day2__bg1,.day2[data-step="2"] .day2__bg2,.day2[data-step="3"] .day2__bg3,.day2[data-step="4"] .day2__bg4{opacity:1}
+.day2[data-step="2"]{--sky:#f1c978;--sub:#4a3f22}
+.day2[data-step="3"]{--sky:#1f4a34;--fg:#f2efe7;--sub:rgba(242,239,231,.78);--pill:rgba(255,255,255,.14)}
+.day2[data-step="4"]{--sky:#0b130e;--fg:#f2efe7;--sub:rgba(242,239,231,.78);--pill:rgba(255,255,255,.14)}
+.day2,.hero2,.coach{overflow-x:clip}
+.day2__in{padding:clamp(24px,5vw,72px)}
+.day2__head{margin-bottom:clamp(20px,3vw,40px);max-width:46rem}
+.day2__head p{color:var(--sub)}
+.day2__grid{display:grid;grid-template-columns:minmax(260px,.85fr) 1.15fr;gap:clamp(20px,4vw,60px)}
+.day2__side{position:sticky;top:96px;align-self:start;display:flex;flex-direction:column;gap:18px}
+.sky{position:relative;aspect-ratio:1/1;max-height:min(46vh,calc(100vh - 360px));min-height:120px;width:100%;border-radius:32px;overflow:hidden;isolation:isolate;box-shadow:0 20px 50px rgba(0,0,0,.18)}
+.sky__l{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
+.sky__l1{background:linear-gradient(#cfe6ef,#f7efd9 70%)}
+.sky__l2{background:linear-gradient(#ffb36b,#ffe3a1 65%)}
+.sky__l3{background:linear-gradient(#1b2f44,#d87f55 85%)}
+.sky__l4{background:radial-gradient(1.5px 1.5px at 20% 22%,#fff,transparent),radial-gradient(1.5px 1.5px at 70% 14%,#fff,transparent),radial-gradient(2px 2px at 44% 34%,#fff,transparent),radial-gradient(1.5px 1.5px at 84% 40%,#fff,transparent),radial-gradient(1.5px 1.5px at 12% 52%,#fff,transparent),linear-gradient(#050a07,#122219)}
+.day2[data-step="1"] .sky__l1,.day2[data-step="2"] .sky__l2,.day2[data-step="3"] .sky__l3,.day2[data-step="4"] .sky__l4{opacity:1}
+.orb{position:absolute;width:26%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 34%,#fffbe0,#ffd25e 55%,#ff9f2e);box-shadow:0 0 70px 26px rgba(255,190,70,.55);left:0;top:0;translate:46% 177%;box-shadow:0 0 40px 14px rgba(255,190,70,.5);transition:translate 1.2s cubic-bezier(.5,.1,.2,1)}
+.day2[data-step="2"] .orb{translate:146% 69%}
+.day2[data-step="3"] .orb{translate:246% 200%;filter:hue-rotate(-18deg) saturate(1.2)}
+.day2[data-step="4"] .orb{translate:223% 62%;filter:grayscale(1) brightness(1.25) hue-rotate(180deg)}
+.hills{position:absolute;inset-inline:0;bottom:0;height:34%;fill:#0f2b1c;opacity:.9}
+.hills path:first-child{opacity:.55}
+.clock{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.clock__t{font:800 clamp(56px,7vw,112px)/.9 var(--display);font-variant-numeric:tabular-nums;letter-spacing:-.04em;direction:ltr}
+.clock__t.roll{animation:roll .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes roll{from{opacity:0;transform:translateY(.35em)}to{opacity:1;transform:none}}
+.clock__l{font:700 18px/1.2 var(--text);color:var(--sub)}
+.dots{display:flex;gap:10px}
+.dots a{display:grid;position:relative;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--pill);color:var(--fg);text-decoration:none;font:800 15px/1 var(--text);transition:background-color .3s,color .3s,transform .2s}
+.dots a:hover{transform:translateY(-2px)}
+.dots a[aria-current=true]{background:var(--fg);color:var(--sky)}
+.dots a:focus-visible,.day2 .btn:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.scene{min-height:min(82vh,760px);display:flex;align-items:center;padding-block:18px;transition:opacity .5s}
+.scene__img{transition:transform .3s ease-out,opacity .5s}
+.js .scene:not(.on):not(:focus-within) .scene__img{opacity:.45}
+.scene__card{position:relative;width:100%;display:grid;gap:20px}
+.scene__n{position:absolute;top:-.55em;inset-inline-start:0;max-width:100%;overflow:hidden;z-index:0;font:800 clamp(120px,17vw,240px)/1 var(--display);color:transparent;-webkit-text-stroke:2px currentColor;opacity:.2;pointer-events:none;direction:ltr}
+.scene__img{position:relative;z-index:1;margin-top:clamp(30px,5vw,70px);border-radius:32px;overflow:hidden;aspect-ratio:2/1;box-shadow:0 26px 60px rgba(0,0,0,.28);transform:perspective(900px) rotateX(var(--ry,0deg)) rotateY(var(--rx,0deg));transition:transform .3s ease-out}
+.scene__img img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.scene.on .scene__img img{transform:scale(1)}
+.scene__img::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.22) 50%,transparent 60%);pointer-events:none}
+.scene__tl{display:inline-flex;align-items:center;gap:10px;justify-self:start;padding:8px 16px;border-radius:999px;background:var(--pill);font:700 14px/1 var(--text)}
+.scene__tl b{font:800 15px/1 var(--text);direction:ltr}
+.scene h3{font-size:clamp(32px,4.4vw,60px)}
+.scene p{font-size:18px;max-width:34rem;color:var(--sub)}
+.scene .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.day2 .btn{background:var(--fg);color:var(--sky);border-color:var(--fg);transition:transform .2s}
+.day2 .btn:hover{background:var(--fg);filter:brightness(1.12)}
+.day2 .btn--ghost{background:transparent;color:var(--fg)}
+.day2 .btn--ghost:hover{background:var(--pill)}
+.day2__hint{font-size:14px;color:var(--sub)}
+@media(max-width:900px){
+ .day2__grid{display:block}
+ .day2__side,.day2__scenes{min-width:0}
+ .day2__side{top:84px;z-index:5;flex-direction:row;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:24px;background:var(--sky);box-shadow:0 10px 30px rgba(0,0,0,.14);transition:background-color 1s}
+ .sky,.day2__hint,.clock__l{display:none}
+ .clock__t{font-size:44px}
+ .dots a{width:40px;height:40px}
+ .scene,.js .scene{min-height:0;opacity:1;padding-block:28px;scroll-margin-top:170px}
+ .js .scene:not(.on) .scene__img{opacity:1}
+ .scene__img img{transform:none;transition:none}
+ .scene__img{aspect-ratio:16/10}
+}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;border-radius:32px;overflow:hidden;background:var(--ink);color:#f2efe7}
+.story__text{padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;gap:18px;justify-content:center}
+.story h2{font-size:clamp(30px,4vw,52px)}
+.story p{opacity:.85}
+.story .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.story__logo{background:var(--paper);display:flex;align-items:center;justify-content:center;padding:clamp(28px,5vw,64px);min-height:320px}.story__logo img{width:min(100%,380px);height:auto;object-fit:contain}
+@media(max-width:900px){.story{grid-template-columns:1fr}.story__logo{min-height:0}}
+
+/* customers */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.voice{border:0;padding:0;background:var(--paper);border-radius:var(--r);overflow:hidden;cursor:zoom-in;aspect-ratio:4/5;transition:transform .2s}
+.voice:hover{transform:translateY(-3px)}
+.voice img{width:100%;height:100%;object-fit:cover;object-position:top}
+@media(max-width:800px){.voices{grid-template-columns:1fr}.voice{aspect-ratio:auto;max-height:560px}}
+dialog{border:0;background:transparent;max-width:min(94vw,720px);max-height:94vh;margin:auto;overflow:visible}
+dialog::backdrop{background:rgba(10,16,12,.88)}
+dialog img{max-height:86vh;width:auto;max-width:100%;margin:0 auto;border-radius:12px}
+dialog button{position:absolute;top:-52px;inset-inline-end:0;width:44px;height:44px;border:0;border-radius:50%;background:var(--bg);font:400 26px/1 var(--text);cursor:pointer}
+
+/* contact */
+footer{background:var(--ink);color:#f2efe7;margin-top:clamp(28px,5vw,56px);padding-block:clamp(44px,7vw,88px) 28px;border-radius:40px 40px 0 0}
+footer .head p{color:rgba(242,239,231,.75)}
+.findhead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:32px}
+.findhead h2{font-size:clamp(36px,5.5vw,76px)}
+.find{display:grid;grid-template-columns:1.2fr 1fr;gap:var(--gap);align-items:start}
+.map{display:block;border-radius:var(--r);overflow:hidden;border:3px solid var(--green);background:#222}
+.map img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .6s}
+.map:hover img{transform:scale(1.03)}
+.maplink{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;padding:16px 22px;border-radius:999px;background:var(--green);color:#fff;font-weight:700;text-decoration:none}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.box{background:#1f2a23;border-radius:var(--r);padding:22px 24px;min-width:0}
+.box--wide{grid-column:1/-1}
+.box h3{font:700 13px/1 var(--text);letter-spacing:.1em;text-transform:uppercase;color:var(--mint);margin-bottom:14px}
+[dir=rtl] .box h3{letter-spacing:0}
+.box address{font-style:normal;font-size:19px;line-height:1.5}
+.box li{display:flex;flex-direction:column;margin-bottom:12px}
+.box li:last-child{margin-bottom:0}
+.box li small{opacity:.65;font-size:14px}
+.box li a,.box li strong{font:600 20px/1.3 var(--text);text-decoration:none}
+.box li a:hover{color:var(--mint)}
+.branches{display:flex;flex-wrap:wrap;gap:10px}
+.branches li{margin:0;display:block}
+.branches a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(242,239,231,.4);font:600 16px/1 var(--text);text-decoration:none}
+.branches a:hover{background:var(--green);border-color:var(--green)}
+.word{font:800 clamp(56px,15vw,220px)/.9 var(--display);letter-spacing:-.04em;color:var(--green);margin-top:56px;overflow:hidden;white-space:nowrap;text-align:center}
+.legal{margin-top:24px;padding-top:18px;border-top:1px solid rgba(242,239,231,.2);font-size:13px;opacity:.7}
+@media(max-width:900px){.find{grid-template-columns:1fr}}
+@media(max-width:480px){.info{grid-template-columns:1fr}}
+.anatomy{background:var(--ink);color:#f2efe7;border-radius:var(--r);padding:24px 24px 28px;display:flex;flex-direction:column;align-items:center;gap:14px}.anatomy h3{font-size:24px;align-self:flex-start}.anatomy svg{width:100%;max-width:440px;height:auto}.muscles{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.muscles li{padding:8px 14px;border-radius:999px;background:#2c382f;color:#8fd6a9;font:700 14px/1 var(--text)}
+.muscles button{border:0;cursor:pointer;padding:9px 15px;border-radius:999px;background:#2c382f;color:#8fd6a9;font:700 14px/1 var(--text);transition:background .2s,color .2s,transform .2s}
+.muscles button:hover{transform:translateY(-2px)}
+.muscles button.on{background:#8fd6a9;color:#0f1a13;box-shadow:0 0 18px rgba(143,214,169,.7)}
+.muscles li{padding:0;background:none}
+.mtip{min-height:48px;text-align:center;font-weight:600;color:#f2efe7;max-width:30rem}
+.coach{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--gap);background:var(--green);color:#fff;border-radius:32px;padding:clamp(24px,4vw,56px)}
+.coach__main{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.coach .eyebrow{background:var(--green-d);color:#fff}
+.coach h2{font-size:clamp(30px,4vw,52px)}
+.coach p{opacity:.92;max-width:32rem}
+.coach__call{background:rgba(0,0,0,.22);border-radius:var(--r);padding:16px 24px;display:flex;flex-direction:column}
+.coach__call small{opacity:.8;font-size:14px}
+.coach__num{font:800 clamp(28px,4vw,44px)/1.1 var(--display);text-decoration:none;color:#fff}
+.coach .row{display:flex;flex-wrap:wrap;gap:12px}
+.coach .btn{background:#fff;color:var(--green-d);border-color:#fff}.coach .btn--ghost{background:transparent;color:#fff}
+.coach__steps{display:grid;gap:14px;align-content:center}
+.coach__steps li{display:flex;gap:18px;align-items:flex-start;background:rgba(255,255,255,.12);border-radius:var(--r);padding:20px 22px}
+.coach__steps b{font:800 28px/1 var(--display);color:var(--mint)}
+.coach__steps h3{font-size:22px;margin-bottom:4px}
+.coach__steps p{font-size:15px;opacity:.9}
+@media(max-width:900px){.coach{grid-template-columns:1fr}}
+/* 3D anatomy turntable: the two figures of the picture are the front and back of one body that turns */
+.stage{position:relative;width:100%;aspect-ratio:5/6;max-height:760px;border-radius:22px;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;
+ background:radial-gradient(ellipse 70% 55% at 50% 38%,#2d4636 0%,#18261d 55%,#0b130e 100%);perspective:1500px;perspective-origin:50% 42%;box-shadow:inset 0 0 0 1px rgba(143,214,169,.12)}
+.stage.drag{cursor:grabbing}
+.stage__grid{position:absolute;left:-20%;right:-20%;bottom:-6%;height:46%;transform:rotateX(76deg);transform-origin:50% 100%;
+ background:repeating-linear-gradient(90deg,rgba(143,214,169,.09) 0 1px,transparent 1px 44px),repeating-linear-gradient(0deg,rgba(143,214,169,.09) 0 1px,transparent 1px 44px);
+ -webkit-mask-image:radial-gradient(ellipse 50% 60% at 50% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 50% 60% at 50% 40%,#000 20%,transparent 75%);pointer-events:none}
+.stage__floor{position:absolute;left:50%;bottom:7.5%;width:64%;aspect-ratio:1;transform:translate(-50%,50%) rotateX(78deg);transform-style:preserve-3d;pointer-events:none}
+.stage__ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(143,214,169,.35);box-shadow:0 0 30px rgba(143,214,169,.25),inset 0 0 40px rgba(143,214,169,.18);
+ background:repeating-conic-gradient(from 0deg,rgba(143,214,169,.55) 0 1.2deg,transparent 1.2deg 10deg);-webkit-mask-image:radial-gradient(circle,transparent 60%,#000 61%,#000 70%,transparent 71%);mask-image:radial-gradient(circle,transparent 60%,#000 61%,#000 70%,transparent 71%)}
+.stage__disc{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(circle,rgba(143,214,169,.16),rgba(143,214,169,.04) 60%,transparent 70%)}
+.stage__shadow{position:absolute;left:50%;top:50%;width:44%;height:44%;margin:-22% 0 0 -22%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.75),rgba(0,0,0,.35) 55%,transparent);transition:transform .1s linear}
+.body3d{position:absolute;left:50%;bottom:6.5%;height:88%;aspect-ratio:612/1086;transform-style:preserve-3d;will-change:transform;translate:-50% 0;transform-origin:50% 50%}
+.face{position:absolute;inset:0;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face--front{transform:translateZ(var(--t,12px)) translateX(-3.76%)}
+.face--back{transform:rotateY(180deg) translateZ(var(--t,12px)) translateX(4.25%)}
+.slab{position:absolute;inset:0;transform-style:preserve-3d;pointer-events:none}
+.slab i{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none}
+.anatomy .fig{position:absolute;inset:0;width:100%;height:100%;max-width:none;overflow:visible;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.fig .shade{opacity:0;transition:opacity .4s;pointer-events:none}
+.has-sel .fig .shade{opacity:.68}
+.fig .lit,.fig .hov,.fig .tint{pointer-events:none}
+.fig .tint{opacity:.3}
+@keyframes pulse{0%,100%{opacity:.12}50%{opacity:.5}}
+.fig .hovw{opacity:.75}
+.fig .m{cursor:pointer;outline:none}
+.fig .m polygon{fill:#fff;fill-opacity:0}
+.sheen,.dark{position:absolute;inset:0;pointer-events:none;-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.sheen{background:linear-gradient(100deg,rgba(255,255,255,0) 36%,rgba(255,240,222,.2) 48%,rgba(255,255,255,0) 60%);background-size:260% 100%;background-position:var(--sx,50%) 0}
+.dark{background:linear-gradient(90deg,#07100a,#1b120c);opacity:var(--dk,0)}
+.slab i,.sheen,.dark{-webkit-mask-image:var(--im);mask-image:var(--im)}
+.stage__hint{position:absolute;left:50%;top:14px;translate:-50% 0;margin:0;padding:7px 14px;border-radius:999px;background:rgba(11,19,14,.7);color:#cfe9d8;font:600 13px/1 var(--text);white-space:nowrap;pointer-events:none;transition:opacity .5s}
+.stage.used .stage__hint{opacity:0}
+.stage__side{position:absolute;left:16px;bottom:14px;margin:0;font:800 12px/1 var(--text);letter-spacing:.14em;text-transform:uppercase;color:rgba(143,214,169,.75);pointer-events:none}
+.stage__bar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.vbtn{border:1px solid rgba(143,214,169,.35);background:transparent;color:#cfe9d8;cursor:pointer;padding:9px 16px;border-radius:999px;font:700 14px/1 var(--text);transition:background .2s,color .2s,transform .15s}
+.vbtn:hover{background:rgba(143,214,169,.14);transform:translateY(-1px)}
+.vbtn:active{transform:translateY(1px)}
+.vbtn.on{background:#8fd6a9;color:#0f1a13;border-color:#8fd6a9}
+.vbtn:focus-visible,.muscles button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.fig .tint{animation:none;opacity:.35}}
+/* real 3D model (three.js) that replaces the turntable once it has loaded */
+.atlas-c{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;animation:atin .7s ease both}
+.atlas-c:active{cursor:grabbing}
+@keyframes atin{from{opacity:0}to{opacity:1}}
+.stage--3d{perspective:none}
+.stage--3d .body3d,.stage--3d .stage__grid,.stage--3d .stage__floor{display:none}
+.stage__hint,.stage__side,.stage__load{z-index:2}
+.atip{position:absolute;z-index:3;pointer-events:none;padding:6px 10px;border-radius:8px;background:rgba(11,19,14,.88);color:#e8f5ec;font:600 13px/1.2 var(--text);white-space:nowrap;transform:translate(12px,12px)}
+.atip small{margin-inline-start:6px;opacity:.7;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.stage__load{position:absolute;left:50%;bottom:44px;translate:-50% 0;margin:0;padding:7px 14px;border-radius:999px;background:rgba(11,19,14,.8);color:#cfe9d8;font:600 13px/1 var(--text);pointer-events:none}
+.stage__load[hidden],.atip[hidden]{display:none}
+.mlist{display:flex;flex-direction:column;gap:6px;font:700 14px/1.2 var(--text);color:#cfe9d8}
+.mlist[hidden]{display:none}
+.mlist select{font:600 15px/1.2 var(--text);padding:10px 12px;border-radius:12px;border:1px solid rgba(143,214,169,.35);background:#1f2a23;color:#f2efe7;max-width:100%}
+.mlist select:focus-visible{outline:3px solid #fff;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.atlas-c{animation:none}}
+.intro{grid-template-columns:1fr!important}
+.anatomy{display:block!important;padding:clamp(20px,3vw,36px)!important}
+.anatomy__fig{display:flex;flex-direction:column;gap:14px;min-width:0}
+.anatomy__fig .anat3d{max-width:none}
+.anatomy__info{display:flex;flex-direction:column;gap:18px;justify-content:center;min-width:0}
+.anatomy{display:grid!important;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center}
+.anatomy__lead{color:rgba(242,239,231,.8)}
+.anatomy .muscles{justify-content:flex-start}
+.minfo{background:#1f2a23;border-radius:var(--r);padding:22px 24px;min-height:190px}
+.minfo h4{font:800 clamp(24px,3vw,34px)/1.1 var(--display);color:#8fd6a9;margin-bottom:10px}
+.minfo__d{font-size:17px}
+.minfo__x{margin-top:12px;font-weight:700;color:#8fd6a9}
+@media(max-width:900px){.anatomy{grid-template-columns:1fr!important}}
+/* redesign: floating header, reveals, progress bar, customer fan, coaching polish */
+header{top:10px;background:transparent;border:0;padding-top:10px}
+.bar{background:var(--paper);border:1px solid rgba(20,28,23,.1);border-radius:999px;padding:0 10px 0 20px;box-shadow:0 10px 34px rgba(20,28,23,.09)}
+[dir=rtl] .bar{padding:0 20px 0 10px}
+nav.links a{position:relative;padding-block:6px}
+nav.links a::after{content:"";position:absolute;inset-inline:0;bottom:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav.links a:hover::after{transform:scaleX(1)}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:3px;z-index:60;background:linear-gradient(90deg,var(--green),var(--mint));transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+[dir=rtl] body::before{transform-origin:100% 50%}
+@supports (animation-timeline:scroll()){body::before{animation:prog linear both;animation-timeline:scroll(root)}@keyframes prog{to{transform:scaleX(1)}}}
+.js [data-r]{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js [data-r].in{opacity:1;transform:none}
+section{padding-block:clamp(24px,4vw,48px)}
+/* customers: a fan of messages */
+@media(min-width:801px){
+ .voices{display:flex;justify-content:center;padding-block:34px 24px}
+ .voice{flex:0 0 31%;max-width:360px;margin-inline:-16px;box-shadow:0 20px 46px rgba(20,28,23,.22);transform:rotate(var(--rot,0deg)) translateY(var(--ty,0px));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+ .voice:nth-child(1){--rot:-5deg;--ty:16px}.voice:nth-child(2){--ty:-10px;position:relative;z-index:2}.voice:nth-child(3){--rot:5deg;--ty:16px}
+ .voice:hover,.voice:focus-visible{transform:rotate(0) translateY(-20px) scale(1.05);z-index:3}
+}
+/* coaching: stripes and a connected path */
+.coach{position:relative;overflow:hidden;isolation:isolate}
+.coach::before{content:"";position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 2px,transparent 2px 26px),radial-gradient(ellipse 50% 60% at 100% 0,rgba(143,214,169,.3),transparent 60%)}
+.coach__num{display:inline-block;transition:transform .3s}
+.coach__num:hover{transform:scale(1.04)}
+.coach__steps{position:relative}
+.coach__steps::before{content:"";position:absolute;inset-block:34px;inset-inline-start:42px;width:2px;background:linear-gradient(var(--mint),transparent);opacity:.5}
+.coach__steps li{position:relative;transition:transform .3s,background-color .3s}
+.coach__steps li:hover{transform:translateX(6px);background:rgba(255,255,255,.2)}
+[dir=rtl] .coach__steps li:hover{transform:translateX(-6px)}
+@media(max-height:560px){.day2__side{position:static}}
+@media print{.js [data-r],.js .scene{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .hero2 *,.tick__t,.day2 *,.scene,.sky__l,.orb,.voice,[data-r]{animation:none!important;transition-duration:.01ms!important}
+ .js [data-r]{opacity:1;transform:none}
+ .hero2__win img{transform:translateX(-50%)}
+ .tick{transform:none}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><img src="@@icon.png@@" alt="" width="40" height="40">Bio Guard</a>
+    <nav class="links" aria-label="Main">
+      <a href="#about" data-i="n0">About</a><a href="#products" data-i="n2">Products</a><a href="#coaching" data-i="n4">Coaching</a><a href="#customers" data-i="n3">Customers</a><a href="#contact" data-i="n1">Visit</a>
+    </nav>
+    <div class="acts">
+      <button class="lang" id="lang" type="button" lang="ckb">کوردی</button>
+      <a class="btn" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="dir">Get directions</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section>
+    <div class="wrap">
+      <div class="hero2" id="hero">
+        <div class="hero2__ghost" aria-hidden="true">BIO GUARD</div>
+        <div class="hero2__text">
+          <span class="eyebrow" style="background:var(--green-d);color:#fff" data-i="ik">Since 2004 · Ashti, Sulaymaniyah</span>
+          <h1 data-i="h1">Gym supplement store in Sulaymaniyah</h1>
+          <p data-i="lead">Protein, pre-workout and lifting gear, open every day from 10:00 to 23:00.</p>
+          <div class="row">
+            <a class="btn" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="dir">Get directions</a>
+            <a class="btn btn--ghost" href="tel:07701637711" data-i="call">Call the store</a>
+          </div>
+        </div>
+        <div class="hero2__stage">
+          <div class="hero2__win"><img data-img="hero-wall" src="@@hero-wall.jpg@@" alt="Five tubs from the shelves: Alpha Lion Superhuman protein, Raw Bum pre-workout, Raw isolate protein, Raw EAA and Raw Bum Itholate protein" fetchpriority="high"></div>
+          <div class="hero2__chips">
+            <div class="chip chip--1"><b>2004</b><span data-i="f1">Open since</span></div>
+            <div class="chip chip--2"><b>4.8 <span aria-hidden="true">★</span></b><span data-i="f2">Google rating</span></div>
+            <div class="chip chip--3"><b>49.9K</b><span data-i="f3">Instagram followers</span></div>
+            <div class="chip chip--4"><b class="ltr">10:00–23:00</b><span data-i="f4">Every day</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="tick" aria-hidden="true"><div class="tick__t"><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span>
+  </div></div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="intro">
+        <div class="panel">
+          <span class="eyebrow" data-i="ik2">About us</span>
+          <h2 data-i="ih">Everything you need to train, under one roof.</h2>
+          <p data-i="ip">Bio Guard is a supplement and lifting store in Sulaymaniyah. We stock protein, pre-workout, creatine, aminos and sleep support from the brands lifters ask for, and our coaches work with you online. Come in, ask at the counter, and leave with what fits your goal and your budget.</p>
+        </div>
+        <div class="anatomy">
+          <div class="anatomy__fig"><h3 data-i="anh">Train every muscle</h3><div class="stage" id="stage">
+            <div class="stage__grid" aria-hidden="true"></div>
+            <div class="stage__floor" aria-hidden="true"><span class="stage__disc"></span><span class="stage__ring" id="ring"></span><span class="stage__shadow" id="shadow"></span></div>
+            <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+              <filter id="fx-blk" color-interpolation-filters="sRGB"><feColorMatrix values="0 0 0 0 .03  0 0 0 0 .07  0 0 0 0 .045  0 0 0 1 0"/></filter>
+              <filter id="fx-lit" color-interpolation-filters="sRGB"><feColorMatrix values="1.12 0 0 0 .02  0 1.12 0 0 .05  0 0 1.1 0 .03  0 0 0 1 0"/></filter>
+              <filter id="fx-grn" color-interpolation-filters="sRGB"><feFlood flood-color="#9dffc2"/><feComposite in2="SourceAlpha" operator="in"/></filter>
+              <filter id="fx-glow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceAlpha" stdDeviation="7" result="b"/><feFlood flood-color="#8fd6a9"/><feComposite in2="b" operator="in" result="g"/><feMerge><feMergeNode in="g"/><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <filter id="fx-soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="6"/></filter>
+            </defs></svg>
+            <div class="body3d" id="body3d">
+              <div class="face face--front" data-side="f"><div class="slab"></div><svg class="fig" viewBox="0 0 612 1086" role="group" aria-label="Front of the body"><defs><image id="imf" href="@@anat-front.webp@@" x="0" y="0" width="612" height="1086"/><mask id="mk-sf" maskUnits="userSpaceOnUse" x="0" y="0" width="612" height="1086"><g class="selg" fill="#fff" filter="url(#fx-soft)"></g></mask><mask id="mk-hf" maskUnits="userSpaceOnUse" x="0" y="0" width="612" height="1086"><g class="hovg" fill="#fff" filter="url(#fx-soft)"></g></mask></defs><use href="#imf"/><use href="#imf" class="shade" filter="url(#fx-blk)"/><g mask="url(#mk-hf)" class="hovw"><use href="#imf" class="hov" filter="url(#fx-lit)"/></g><g filter="url(#fx-glow)"><g mask="url(#mk-sf)"><use href="#imf" class="lit" filter="url(#fx-lit)"/><use href="#imf" class="tint" filter="url(#fx-grn)"/></g></g><g class="hot"></g></svg><div class="dark"></div><div class="sheen"></div></div>
+              <div class="face face--back" data-side="b"><div class="slab"></div><svg class="fig" viewBox="612 0 612 1086" role="group" aria-label="Back of the body"><defs><image id="imb" href="@@anat-back.webp@@" x="612" y="0" width="612" height="1086"/><mask id="mk-sb" maskUnits="userSpaceOnUse" x="612" y="0" width="612" height="1086"><g class="selg" fill="#fff" filter="url(#fx-soft)"></g></mask><mask id="mk-hb" maskUnits="userSpaceOnUse" x="612" y="0" width="612" height="1086"><g class="hovg" fill="#fff" filter="url(#fx-soft)"></g></mask></defs><use href="#imb"/><use href="#imb" class="shade" filter="url(#fx-blk)"/><g mask="url(#mk-hb)" class="hovw"><use href="#imb" class="hov" filter="url(#fx-lit)"/></g><g filter="url(#fx-glow)"><g mask="url(#mk-sb)"><use href="#imb" class="lit" filter="url(#fx-lit)"/><use href="#imb" class="tint" filter="url(#fx-grn)"/></g></g><g class="hot"></g></svg><div class="dark"></div><div class="sheen"></div></div>
+            </div>
+            <div class="atip" id="atip" hidden></div>
+            <p class="stage__load" id="load3d" role="status" hidden data-i="anload">Building the 3D model…</p>
+            <p class="stage__hint" data-i="anhint">Drag to turn the body</p>
+            <p class="stage__side" id="side" aria-hidden="true"></p>
+          </div>
+          <div class="stage__bar"><button type="button" class="vbtn" data-view="0" data-i="anfront">Front</button><button type="button" class="vbtn" id="spin" data-i="anspin">Turn around</button><button type="button" class="vbtn" data-view="180" data-i="anback">Back</button></div></div>
+          <div class="anatomy__info">
+            <p class="anatomy__lead" data-i="anlead">Drag the body to turn it around, then click a muscle, or one of the buttons, to light it up and see what it does.</p>
+            <ul class="muscles"><li><button type="button" data-m="ch" data-i="mu1">Chest</button></li><li><button type="button" data-m="sh" data-i="mu3">Shoulders</button></li><li><button type="button" data-m="tp" data-i="mu11">Traps</button></li><li><button type="button" data-m="lt" data-i="mu2">Lats</button></li><li><button type="button" data-m="bi" data-i="mu4">Biceps</button></li><li><button type="button" data-m="tr" data-i="mu5">Triceps</button></li><li><button type="button" data-m="fa" data-i="mu8">Forearms</button></li><li><button type="button" data-m="ab" data-i="mu6">Abs</button></li><li><button type="button" data-m="ob" data-i="mu12">Obliques</button></li><li><button type="button" data-m="gl" data-i="mu9">Glutes</button></li><li><button type="button" data-m="qd" data-i="mu7">Quads</button></li><li><button type="button" data-m="hm" data-i="mu13">Hamstrings</button></li><li><button type="button" data-m="ca" data-i="mu10">Calves</button></li></ul>
+            <label class="mlist" hidden><span data-i="anall">All muscles</span><select id="mpick"><option value="" data-i="anpick">Choose any muscle…</option></select></label>
+            <div class="minfo" aria-live="polite"><h4 id="mn"></h4><p id="md" class="minfo__d"></p><p id="mtip" class="minfo__x"></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="day2" id="day2" data-step="1"><i class="day2__bg day2__bg1"></i><i class="day2__bg day2__bg2"></i><i class="day2__bg day2__bg3"></i><i class="day2__bg day2__bg4"></i>
+        <div class="day2__in">
+          <div class="day2__head"><h2 data-i="ph">A training day on our shelves</h2><p data-i="pp">What we stock, in the order you use it.</p></div>
+          <div class="day2__grid">
+            <div class="day2__side">
+              <div class="sky" aria-hidden="true"><i class="sky__l sky__l1"></i><i class="sky__l sky__l2"></i><i class="sky__l sky__l3"></i><i class="sky__l sky__l4"></i><i class="orb"></i>
+                <svg class="hills" viewBox="0 0 400 100" preserveAspectRatio="none"><path d="M0 60 Q60 20 130 52 T260 40 T400 56 V100 H0Z"/><path d="M0 78 Q80 46 170 74 T330 66 T400 76 V100 H0Z"/></svg></div>
+              <div class="clock"><div class="clock__t" id="clk" aria-hidden="true">17:30</div><div class="clock__l" id="clkl" aria-hidden="true"></div></div>
+              <nav class="dots" aria-label="Products">
+                <a href="#sc1" aria-current="true"><span>01</span><span class="sr" data-i="c1h">Pre-workout</span></a>
+                <a href="#sc2" aria-current="false"><span>02</span><span class="sr" data-i="c2h">Creatine and aminos</span></a>
+                <a href="#sc3" aria-current="false"><span>03</span><span class="sr" data-i="c3h">Protein</span></a>
+                <a href="#sc4" aria-current="false"><span>04</span><span class="sr" data-i="c4h">Sleep</span></a>
+              </nav>
+              <p class="day2__hint" data-i="dayscroll">Scroll to move through the day.</p>
+            </div>
+            <div class="day2__scenes">
+        <article class="scene" id="sc1" data-time="17:30">
+          <div class="scene__card">
+            <span class="scene__n" aria-hidden="true">01</span>
+            <div class="scene__img"><img data-img="day1" src="@@day1.jpg@@" alt="Three Raw Bum Thavage pre-workout tubs" loading="lazy" decoding="async"></div>
+            <span class="scene__tl"><b>17:30</b><span class="tl" data-i="tk1">Before you train</span></span>
+            <h3 data-i="c1h">Pre-workout</h3>
+            <p data-i="c1p">Raw Bum Thavage in Dragon Fruit, Rocket Candy and Peach Bum, to take before you train.</p>
+            <div class="row"><a class="btn" href="tel:07701637711" data-i="ask">Ask about it</a><a class="btn btn--ghost" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="see">See it in store</a></div>
+          </div>
+        </article>
+        <article class="scene" id="sc2" data-time="18:00">
+          <div class="scene__card">
+            <span class="scene__n" aria-hidden="true">02</span>
+            <div class="scene__img"><img data-img="day2" src="@@day2.jpg@@" alt="Raw creatine monohydrate and Raw EAA" loading="lazy" decoding="async"></div>
+            <span class="scene__tl"><b>18:00</b><span class="tl" data-i="tk2">Every training day</span></span>
+            <h3 data-i="c2h">Creatine and aminos</h3>
+            <p data-i="c2p">Raw creatine monohydrate and Raw EAA in Kiwi Blueberry, for every day of training.</p>
+            <div class="row"><a class="btn" href="tel:07701637711" data-i="ask">Ask about it</a><a class="btn btn--ghost" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="see">See it in store</a></div>
+          </div>
+        </article>
+        <article class="scene" id="sc3" data-time="20:00">
+          <div class="scene__card">
+            <span class="scene__n" aria-hidden="true">03</span>
+            <div class="scene__img"><img data-img="day3" src="@@day3.jpg@@" alt="Raw Bum Itholate, Raw isolate and Raw vegan protein" loading="lazy" decoding="async"></div>
+            <span class="scene__tl"><b>20:00</b><span class="tl" data-i="tk3">After you train</span></span>
+            <h3 data-i="c3h">Protein</h3>
+            <p data-i="c3p">Raw isolate and vegan protein, and Raw Bum Itholate in Mint Chip Ice Cream, for after you train.</p>
+            <div class="row"><a class="btn" href="tel:07701637711" data-i="ask">Ask about it</a><a class="btn btn--ghost" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="see">See it in store</a></div>
+          </div>
+        </article>
+        <article class="scene" id="sc4" data-time="23:00">
+          <div class="scene__card">
+            <span class="scene__n" aria-hidden="true">04</span>
+            <div class="scene__img"><img data-img="day4" src="@@day4.jpg@@" alt="Raw Sleep tubs" loading="lazy" decoding="async"></div>
+            <span class="scene__tl"><b>23:00</b><span class="tl" data-i="tk4">End of the day</span></span>
+            <h3 data-i="c4h">Sleep</h3>
+            <p data-i="c4p">Raw Sleep in Strawberry Kiwi and Mixed Berry, for the end of the day.</p>
+            <div class="row"><a class="btn" href="tel:07701637711" data-i="ask">Ask about it</a><a class="btn btn--ghost" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="see">See it in store</a></div>
+          </div>
+        </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="coaching">
+    <div class="wrap">
+      <div class="coach">
+        <div class="coach__main">
+          <span class="eyebrow" data-i="kh0">Online coaching</span>
+          <h2 data-i="kh">Train with a coach, wherever you are.</h2>
+          <p data-i="kp">Not in Sulaymaniyah, or just want someone to guide you? Our coaches work with you online. Call or message the coaching line and tell them your goal.</p>
+          <div class="coach__call">
+            <small data-i="coachline">Coaching line</small>
+            <a class="ltr coach__num" href="tel:07701981606">0770 198 1606</a>
+          </div>
+          <div class="row"><a class="btn" href="tel:07701981606" data-i="cocall">Call the coaching line</a><a class="btn btn--ghost" href="https://instagram.com/bioguardsuly" data-i="olink">Message us on Instagram</a></div>
+        </div>
+        <ol class="coach__steps">
+          <li><b>01</b><div><h3 data-i="ks1">Reach out</h3><p data-i="ks1p">Call the coaching line or message us on Instagram.</p></div></li>
+          <li><b>02</b><div><h3 data-i="ks2">Tell us your goal</h3><p data-i="ks2p">Building muscle, losing weight or getting stronger: say what you want.</p></div></li>
+          <li><b>03</b><div><h3 data-i="ks3">Train with a plan</h3><p data-i="ks3p">Your coach guides you online, and the store has the supplements you need.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  <section id="story">
+    <div class="wrap">
+      <div class="story">
+        <div class="story__text">
+          <h2 data-i="oh">Serving Sulaymaniyah since 2004</h2>
+          <p data-i="o1">Bio Guard has sold supplements and training gear in Sulaymaniyah since 2004. Ask at the counter what fits your goal and budget.</p>
+          <p data-i="o2">Customers rate us 4.8 on Google, and 49.9K people follow our Instagram page.</p>
+          <p data-i="o3">Not in Sulaymaniyah? Our coaches work with you online.</p>
+          <div class="row"><a class="btn" href="tel:07701981606" data-i="cocall">Call the coaching line</a><a class="btn btn--ghost" href="https://instagram.com/bioguardsuly" data-i="olink">Message us on Instagram</a></div>
+        </div>
+        <div class="story__logo"><img data-img="logo" src="@@logo.png@@" alt="Bio Guard logo" loading="lazy" decoding="async"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="customers">
+    <div class="wrap">
+      <div class="head"><h2 data-i="ch">What customers write to us</h2><p data-i="cp">Messages and story replies, shown as they were sent.</p></div>
+      <div class="voices">
+        <button type="button" class="voice" aria-label="Open this customer message"><img data-img="f1" src="@@f1.jpg@@" alt="A customer message in Kurdish praising the store's advice on protein" loading="lazy"></button>
+        <button type="button" class="voice" aria-label="Open this customer message"><img data-img="f2" src="@@f2.jpg@@" alt="A customer message in Kurdish about losing 9 kilos in a month" loading="lazy"></button>
+        <button type="button" class="voice" aria-label="Open this customer message"><img data-img="f3" src="@@f3.jpg@@" alt="A customer message about supplements for a student's focus and memory" loading="lazy"></button>
+      </div>
+      <dialog id="lb" aria-label="Customer message"><button type="button" id="lbx" aria-label="Close">×</button><img alt=""></dialog>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="findhead">
+      <div><h2 data-i="fh">Come to Ashti</h2><p style="margin-top:10px;opacity:.8" data-i="fl">Open every day, 10:00 to 23:00.</p></div>
+      <a class="btn" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" data-i="dir">Get directions</a>
+    </div>
+    <div class="find">
+      <div>
+        <a class="map" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8" aria-label="Open the Bio Guard pin in Google Maps"><img data-img="map11" src="@@map11.jpg@@" alt="Map with the Bio Guard pin in Ashti, near Zagros Street, Sulaymaniyah" loading="lazy"></a>
+        <a class="maplink" href="https://maps.app.goo.gl/qyZYVKKzGdv5DHaS8"><span data-i="fmap">Open in Google Maps</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="info">
+        <div class="box"><h3 data-i="fa">Address</h3><address data-i="addr">Ashti, near the Blind School<br>Sulaymaniyah</address></div>
+        <div class="box"><h3 data-i="fhrs">Opening hours</h3><ul><li><small data-i="every">Every day</small><strong data-i="hrs">10:00 to 23:00</strong></li></ul></div>
+        <div class="box"><h3 data-i="fp">Call</h3><ul>
+          <li><small data-i="fstore">Store</small><a class="ltr" href="tel:07701637711">0770 163 7711</a></li>
+          <li><small data-i="coachline">Coaching line</small><a class="ltr" href="tel:07701981606">0770 198 1606</a></li></ul></div>
+        <div class="box"><h3 data-i="fs">Follow</h3><ul>
+          <li><small>Instagram</small><a class="ltr" href="https://instagram.com/bioguardsuly">@bioguardsuly</a></li>
+          <li><small data-i="frate">Google rating</small><strong class="ltr">4.8 ★ · 49.9K</strong></li></ul></div>
+        <div class="box box--wide"><h3 data-i="fbr">Other branches</h3><ul class="branches">
+          <li><a href="https://instagram.com/bioguard.iq" data-i="b2">Erbil</a></li>
+          <li><a href="https://instagram.com/bioguard_newroz" data-i="b3">Erbil Newroz</a></li>
+          <li><a href="https://instagram.com/bioguard_duhok" data-i="b4">Duhok</a></li>
+          <li><a href="https://instagram.com/bioguard.iraq" data-i="b5">Baghdad</a></li></ul></div>
+      </div>
+    </div>
+    <p class="word" aria-hidden="true">Bio Guard</p>
+    <p class="legal">© 2026 Bio Guard · Product names and logos belong to their owners. Map from Google Maps.<!--ADMIN--></p>
+  </div>
+</footer>
+
+<script>
+var CKB={@@CKB@@
+n0:"دەربارە",ik2:"دەربارەی ئێمە",f1:"کراوەین لە",f2:"هەڵسەنگاندنی گووگڵ",f3:"شوێنکەوتووی ئینستاگرام",f4:"هەموو ڕۆژێک",anh:"هەموو ماسولکەیەک ڕاهێنان پێبکە",anfront:"پێشەوە",anback:"پشتەوە",mu1:"سنگ",mu2:"لاتس",mu11:"ترەپس",mu12:"تەنیشتی ورگ",mu13:"هامسترینگ",anhint:"بۆ سوڕاندنی جەستە ڕایبکێشە",anall:"هەموو ماسولکەکان",anpick:"هەر ماسولکەیەک هەڵبژێرە…",tk1:"پێش ڕاهێنان",tk2:"هەموو ڕۆژێکی ڕاهێنان",tk3:"دوای ڕاهێنان",tk4:"کۆتایی ڕۆژ",ask:"پرسیاری لێ بکە",see:"لە فرۆشگا ببینە",dayscroll:"بۆ ڕۆیشتن بەناو ڕۆژەکەدا بخشێنە.",anload:"مۆدێلی سێ ڕەهەندی ئامادە دەکرێت…",anspin:"بیسوڕێنە",mu3:"شان",mu4:"بایسێپس",mu5:"ترایسێپس",mu6:"ورگ",mu7:"کوادس",anlead:"جەستەکە ڕابکێشە بۆ ئەوەی بیسوڕێنیت، پاشان کلیک لە ماسولکەیەک بکە، یان لە یەکێک لە دوگمەکان، بۆ ڕووناککردنەوەی و بینینی کارەکەی.",n4:"ڕاهێنان",kh0:"ڕاهێنانی ئۆنلاین",kh:"لەگەڵ ڕاهێنەرێک ڕاهێنان بکە، لە هەر شوێنێک بیت.",kp:"لە سلێمانی نیت، یان تەنها دەتەوێت کەسێک ڕێنمایی بکات؟ ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن. پەیوەندی بە هێڵی ڕاهێنان بکە یان نامە بنێرە و ئامانجەکەت پێ بڵێ.",ks1:"پەیوەندی بکە",ks1p:"پەیوەندی بە هێڵی ڕاهێنان بکە یان لە ئینستاگرام نامەمان بۆ بنێرە.",ks2:"ئامانجەکەت پێ بڵێ",ks2p:"گەورەکردنی ماسولکە، کێش دابەزاندن یان بەهێزتربوون: بڵێ چیت دەوێت.",ks3:"بە پلان ڕاهێنان بکە",ks3p:"ڕاهێنەرەکەت بە ئۆنلاین ڕێنماییت دەکات، و فرۆشگاکە ئەو ماددە خۆراکییانەی هەیە کە پێویستتە.",mu8:"ساعید",mu9:"سمت",mu10:"ساق"
+};
+var EN={},btn=document.getElementById('lang');
+document.querySelectorAll('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
+function setLang(l){var k=l==='ckb';document.documentElement.lang=k?'ckb':'en';document.documentElement.dir=k?'rtl':'ltr';
+ document.querySelectorAll('[data-i]').forEach(function(e){var v=(k?CKB:EN)[e.dataset.i];if(v!==undefined)e.innerHTML=v});
+ btn.textContent=k?'English':'کوردی';try{localStorage.setItem('bg-lang',l)}catch(e){}}
+btn.addEventListener('click',function(){setLang(document.documentElement.lang==='ckb'?'en':'ckb')});
+try{if(localStorage.getItem('bg-lang')==='ckb')setLang('ckb')}catch(e){}
+var lb=document.getElementById('lb');
+document.querySelectorAll('.voice').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img'),t=lb.querySelector('img');t.src=im.src;t.alt=im.alt;lb.showModal()})});
+document.getElementById('lbx').addEventListener('click',function(){lb.close()});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+var TIPS={en:{def:"Pick a muscle to see what it is and how to train it.",ch:"Chest: bench press, push-ups and dips.",lt:"Lats: pull-ups, lat pulldowns and rows.",tp:"Traps: shrugs, face pulls and rows.",sh:"Shoulders: overhead press and lateral raises.",bi:"Biceps: curls and chin-ups.",tr:"Triceps: dips, pushdowns and close-grip press.",ab:"Abs: planks, crunches and leg raises.",ob:"Obliques: side planks, cable woodchops and hanging knee raises.",qd:"Quads: squats, leg press and lunges.",hm:"Hamstrings: Romanian deadlifts, leg curls and good mornings.",fa:"Forearms: wrist curls, farmer carries and dead hangs.",gl:"Glutes: hip thrusts, squats and lunges.",ca:"Calves: standing and seated calf raises."},
+ckb:{def:"ماسولکەیەک هەڵبژێرە بۆ بینینی چییەتی و چۆنیەتی ڕاهێنانی.",ch:"سنگ: بێنچ پرێس، پووش ئەپ و دیپس.",lt:"لاتس: پول ئەپ، لات پوڵداون و ڕۆ.",tp:"ترەپس: شرەگ، فەیس پوڵ و ڕۆ.",sh:"شان: ئۆڤەرهێد پرێس و لەیتەڕاڵ ڕەیز.",bi:"بایسێپس: کەرڵ و چین ئەپ.",tr:"ترایسێپس: دیپس و پووشداون.",ab:"ورگ: پلانک، کرانچ و لێگ ڕەیز.",ob:"تەنیشتی ورگ: ساید پلانک و وودچۆپ.",qd:"کوادس: سکوات، لێگ پرێس و لانج.",hm:"هامسترینگ: ڕۆمانیان دێدلیفت و لێگ کەرڵ.",fa:"ساعید: ڕیست کەرڵ و هەڵگرتنی قورس.",gl:"سمت: هیپ سڕەست و سکوات.",ca:"ساق: کاڵف ڕەیز."}};
+var DESC={en:{ch:"Pectorals (chest). They push your arms forward and across your body.",lt:"Lats and the muscles on your shoulder blade. They pull your arms down and back, and give your back its width.",tp:"Trapezius (traps). They lift, pull back and steady your shoulder blades, and hold up your neck.",sh:"Deltoids (shoulders). They lift your arm forward, out to the side and back.",bi:"Biceps. They bend your elbow and turn your palm up.",tr:"Triceps. They straighten your elbow and make up most of the back of the upper arm.",fa:"Forearms. They control your wrist and your grip.",ab:"Rectus abdominis (abs), the six-pack. It bends your trunk forward and keeps your core steady.",ob:"Obliques, the muscles on the sides of your waist. They twist your trunk and bend it to the side.",gl:"Glutes. They push your hips forward, and are the biggest muscles in the body.",qd:"Quadriceps (quads), the front of the thigh. They straighten your knee.",hm:"Hamstrings, the back of the thigh. They bend your knee and help drive your hips forward.",ca:"Calves and shins. They lift your heel and point your toes when you walk, run or jump."},
+ckb:{ch:"سنگ (پێکتۆراڵ). باڵەکانت بەرەو پێش و بەرەو ناوەڕاستی جەستە دەبەن.",lt:"لاتس و ماسولکەکانی سەر شانەپەڕ. باڵەکانت بەرەو خوارەوە و دواوە دەکێشن و پشتت پان دەکەن.",tp:"ترەپس. شانەپەڕەکانت بەرز دەکەنەوە و بەرەو دواوە دەیانکێشن و پشتگیری ملت دەکەن.",sh:"شان (دێلتۆید). باڵت بەرەو پێش و تەنیشت و دواوە بەرز دەکەنەوە.",bi:"بایسێپس. ئانیشکت دەنوشتێننەوە و لەپی دەستت بەرەو سەرەوە دەگێڕن.",tr:"ترایسێپس. ئانیشکت ڕاست دەکەنەوە و زۆربەی پشتەوەی باڵی سەرەوە پێک دەهێنن.",fa:"ساعید. ڕیست و گرتنی دەستت کۆنترۆڵ دەکەن.",ab:"ورگ (شەش پاکەکە). لەشت بەرەو پێش دەنوشتێنێتەوە و ناوەڕاستی جەستەت جێگیر دەکات.",ob:"ماسولکەکانی تەنیشتی ورگ. لەشت دەسوڕێنن و بە لادا دەینوشتێننەوە.",gl:"سمت. ڕانەکانت بەرەو پێش دەبەن و گەورەترین ماسولکەی جەستەن.",qd:"کوادس، پێشەوەی ڕان. ئەژنۆت ڕاست دەکەنەوە.",hm:"هامسترینگ، پشتەوەی ڕان. ئەژنۆت دەنوشتێننەوە و یارمەتی جوڵاندنی ڕانەکانت دەدەن.",ca:"ساق. پاژنەت بەرز دەکەنەوە و پەنجەکانی پێت ڕاست دەکەنەوە کاتێک ڕێ دەکەیت، ڕادەکەیت یان باز دەدەیت."}};
+/* Muscle shapes traced on the picture (1224x1086, front figure on the left half, back on the right).
+   One side of the body is drawn; the third number mirrors it to the other side around that line (0 = no mirror). */
+var SHAPES={f:[["ch","327,212 300,206 268,210 242,222 236,248 244,278 262,296 292,300 316,292 327,280",329],
+ ["sh","222,200 248,206 244,222 238,248 226,274 210,292 192,282 186,250 196,216",329],
+ ["tp","302,178 306,198 280,204 250,206 262,196 290,186",329],
+ ["bi","238,282 236,310 228,336 214,358 196,372 180,360 184,334 198,306 214,288",329],
+ ["fa","186,360 212,366 200,400 180,430 160,462 142,492 106,490 118,452 136,416 152,384 166,366",329],
+ ["ab","282,300 329,302 376,300 378,360 374,420 362,460 329,480 296,460 284,420 280,360",0],
+ ["ob","250,300 280,302 282,360 286,430 268,445 252,430 246,380 244,330",329],
+ ["qd","238,462 250,460 275,490 300,528 312,560 316,600 306,650 296,700 270,712 240,706 228,670 224,600 226,530 230,490",329],
+ ["ca","222,768 252,772 278,782 278,830 272,875 260,920 254,940 230,940 222,900 216,850 216,800",338]],
+ b:[["tp","893,135 868,132 850,160 812,180 796,190 830,190 846,215 860,255 878,295 893,332",892],
+ ["sh","796,184 772,188 752,206 744,236 744,268 762,282 782,262 795,240 800,210",892],
+ ["lt","800,196 832,192 854,247 876,296 890,330 880,362 860,385 838,412 818,412 806,390 800,350 796,300 798,250",892],
+ ["tr","746,272 765,282 788,268 790,300 780,335 765,370 750,398 728,395 724,360 732,320 738,290",892],
+ ["fa","720,390 754,398 744,425 722,456 704,484 694,505 658,502 666,470 676,436 690,410",892],
+ ["gl","806,459 830,448 852,447 872,460 886,480 889,520 887,548 876,576 848,584 820,570 804,538 802,494",892],
+ ["hm","786,585 820,590 852,592 884,590 888,640 884,690 874,735 850,752 820,750 796,740 784,700 780,640",892],
+ ["ca","778,748 810,752 840,750 838,790 830,840 818,885 800,900 772,895 758,860 754,820 760,780",892]]};
+var NS='http://www.w3.org/2000/svg',cur=null,hov=null,anat=document.querySelector('.anatomy'),tip=document.getElementById('mtip'),nm=document.getElementById('mn'),md=document.getElementById('md');
+var stage=document.getElementById('stage'),body=document.getElementById('body3d'),ring=document.getElementById('ring'),shadow=document.getElementById('shadow'),sideEl=document.getElementById('side');
+var faces={f:body.querySelector('.face--front'),b:body.querySelector('.face--back')},ON={};
+function mirror(p,ax){return p.split(' ').map(function(q){var a=q.split(',');return (2*ax-a[0])+','+a[1]}).join(' ')}
+function label(k){var b=document.querySelector('.muscles button[data-m="'+k+'"]');return b?b.textContent:k}
+Object.keys(SHAPES).forEach(function(s){var hot=faces[s].querySelector('.hot'),groups={};
+ SHAPES[s].forEach(function(r){var g=groups[r[0]];
+  if(!g){g=groups[r[0]]=document.createElementNS(NS,'g');g.setAttribute('class','m');g.dataset.g=r[0];g.setAttribute('tabindex','0');g.setAttribute('role','button');hot.appendChild(g);(ON[r[0]]=ON[r[0]]||[]).push(s)}
+  [r[1]].concat(r[2]?[mirror(r[1],r[2])]:[]).forEach(function(pts){var p=document.createElementNS(NS,'polygon');p.setAttribute('points',pts);g.appendChild(p)})})});
+// the picture itself also gives the side walls (a stack of dark copies), the light sweep and the shading
+Object.keys(faces).forEach(function(s){var f=faces[s],src=f.querySelector('image').getAttribute('href'),slab=f.querySelector('.slab'),N=8;
+ f.style.setProperty('--im','url("'+src+'")');
+ for(var k=1;k<=N;k++){var t=k/N,i=document.createElement('i'),c=[Math.round(158-88*t),Math.round(70-44*t),Math.round(50-34*t)];
+  i.style.transform='translateZ(calc(var(--t) * -'+t.toFixed(3)+'))';i.style.background='rgb('+c.join(',')+')';slab.appendChild(i)}});
+function fill(cls,k){Object.keys(faces).forEach(function(s){var g=faces[s].querySelector('.'+cls);g.innerHTML='';
+ if(k)faces[s].querySelectorAll('.m[data-g="'+k+'"] polygon').forEach(function(p){g.appendChild(p.cloneNode())})})}
+var spec=null;nm.dir=md.dir=tip.dir='auto';
+function showTip(){var L=document.documentElement.lang==='ckb'?'ckb':'en',ck=L==='ckb';
+ if(spec){nm.textContent=spec.side==='Midline'?spec.name:spec.name+' · '+spec.side;md.textContent=spec.text;
+  if(spec.grp){var x=(TIPS[L]||{})[spec.grp]||'',i=x.indexOf(':');tip.textContent=(ck?'بەشێکە لە: ':'Part of: ')+label(spec.grp)+' · '+(ck?'ڕاهێنان: ':'Exercises: ')+x.slice(i+1).trim()}else tip.textContent='';return}
+ if(!cur){nm.textContent='';md.textContent=TIPS[L].def;tip.textContent='';return}
+ nm.textContent=label(cur);md.textContent=DESC[L][cur];var x=TIPS[L][cur],i=x.indexOf(':');
+ tip.textContent=(ck?'ڕاهێنان: ':'Exercises: ')+x.slice(i+1).trim()}
+function facing(){return Math.cos(ang*Math.PI/180)>=0?'f':'b'}
+function pick(k,fromBody){cur=(cur===k)?null:k;anat.classList.toggle('has-sel',!!cur);fill('selg',cur);setHover(null);
+ document.querySelectorAll('.fig .m').forEach(function(g){g.classList.toggle('on',g.dataset.g===cur);g.setAttribute('aria-pressed',g.dataset.g===cur)});
+ document.querySelectorAll('.muscles button').forEach(function(b){b.classList.toggle('on',b.dataset.m===cur);b.setAttribute('aria-pressed',b.dataset.m===cur)});
+ if(window.ATLAS){spec=null;ATLAS.select(cur,null);if(cur)ATLAS.focus(cur)}
+ else if(cur&&!fromBody&&ON[cur].indexOf(facing())<0)turnTo(ON[cur][0]==='f'?0:180);
+ stage.classList.add('used');showTip()}
+// called by the 3D model (three.js, loaded when the section comes into view)
+window.onAtlasPick=function(h){spec=h&&h.name?h:null;cur=null;fill('selg',null);document.querySelectorAll('.fig .m').forEach(function(g){g.classList.remove('on');g.setAttribute('aria-pressed','false')});anat.classList.toggle('has-sel',!!spec);
+ document.querySelectorAll('.muscles button').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-pressed','false')});showTip()};
+var atlasSd='f';
+window.onAtlasSide=function(sd){atlasSd=sd;var L=document.documentElement.lang==='ckb'?CKB:EN;sideEl.textContent=L[sd==='f'?'anfront':'anback']||'';
+ document.querySelectorAll('.vbtn[data-view]').forEach(function(v){v.classList.toggle('on',(v.dataset.view==='0')===(sd==='f'))})};
+window.onAtlasSpin=function(on){var s=document.getElementById('spin');s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)};
+window.onAtlasLost=function(){var m=document.getElementById('mpick');if(m)m.parentElement.hidden=true;sizeSlab();render();relabel()};
+window.onAtlasReady=function(){stage.classList.add('used');if(cur){ATLAS.select(cur,null);ATLAS.focus(cur)}window.onAtlasSide(atlasSd)};
+function setHover(k){if(k===cur)k=null;if(k===hov)return;hov=k;fill('hovg',k)}
+var justDragged=false;
+document.querySelectorAll('.fig .m').forEach(function(g){var k=g.dataset.g;
+ g.addEventListener('click',function(){if(!justDragged)pick(k,true)});
+ g.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse'&&!drag)setHover(k)});
+ g.addEventListener('pointerleave',function(){setHover(null)});
+ g.addEventListener('focus',function(){setHover(k)});g.addEventListener('blur',function(){setHover(null)});
+ g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(k,true)}})});
+document.querySelectorAll('.muscles button').forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.m)})});
+// turning: angle 0 shows the front, 180 the back
+var ang=0,tX=0,tY=0,gX=0,gY=0,anim=null,raf=0,drag=null,RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function render(){if(window.ATLAS)return;body.style.transform='rotateX('+tX.toFixed(2)+'deg) rotateY('+(ang+tY).toFixed(2)+'deg)';
+ var r=(ang+tY)*Math.PI/180,c=Math.cos(r),s=Math.sin(r);
+ faces.f.style.setProperty('--dk',(Math.max(0,1-c)*.42).toFixed(3));faces.b.style.setProperty('--dk',(Math.max(0,1+c)*.42).toFixed(3));
+ faces.f.style.setProperty('--sx',(50-s*70).toFixed(1)+'%');faces.b.style.setProperty('--sx',(50+s*70).toFixed(1)+'%');
+ shadow.style.transform='scale('+(0.42+0.58*Math.abs(c)).toFixed(3)+',1)';ring.style.transform='rotate('+(-ang).toFixed(1)+'deg)';
+ var L=document.documentElement.lang==='ckb'?CKB:EN,sd=c>=0?'f':'b';sideEl.textContent=L[sd==='f'?'anfront':'anback']||'';
+ document.querySelectorAll('.vbtn[data-view]').forEach(function(v){v.classList.toggle('on',(v.dataset.view==='0')===(sd==='f'))})}
+function tick(now){raf=0;var busy=false;
+ if(anim){var p=Math.min(1,(now-anim.t0)/anim.d),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;ang=anim.a0+(anim.a1-anim.a0)*e;
+  if(p<1)busy=true;else{anim=null;ang=((Math.round(ang)%360)+360)%360}}
+ tX+=(gX-tX)*.12;tY+=(gY-tY)*.12;if(Math.abs(gX-tX)>.02||Math.abs(gY-tY)>.02)busy=true;
+ render();if(busy)raf=requestAnimationFrame(tick)}
+function kick(){if(!raf)raf=requestAnimationFrame(tick)}
+function animateTo(a,d){if(RM){ang=((Math.round(a)%360)+360)%360;anim=null;render();return}anim={a0:ang,a1:a,t0:performance.now(),d:d||900};kick()}
+function turnTo(side){var d=((((side-ang)%360)+540)%360)-180;if(Math.abs(d)>.5)animateTo(ang+d,700+Math.abs(d)*3)}
+document.querySelectorAll('.vbtn[data-view]').forEach(function(v){v.addEventListener('click',function(){stage.classList.add('used');if(window.ATLAS){ATLAS.view(v.dataset.view==='0'?'front':'back');return}turnTo(+v.dataset.view)})});
+document.getElementById('spin').addEventListener('click',function(){stage.classList.add('used');if(window.ATLAS){ATLAS.spin();return}animateTo(Math.round((anim?anim.a1:ang)/180)*180+180,1300)});
+stage.addEventListener('pointerdown',function(e){if(window.ATLAS||e.button!==0||drag)return;drag={x:e.clientX,a:ang,id:e.pointerId,moved:false,lx:e.clientX,lt:performance.now(),v:0}});
+stage.addEventListener('pointermove',function(e){if(window.ATLAS)return;var r=stage.getBoundingClientRect();
+ if(drag&&e.pointerId===drag.id){var dx=e.clientX-drag.x;
+  if(!drag.moved&&Math.abs(dx)>6){drag.moved=true;anim=null;setHover(null);stage.classList.add('drag','used');try{stage.setPointerCapture(e.pointerId)}catch(_){}}
+  if(drag.moved){var now=performance.now();drag.v=drag.v*.6+.4*(e.clientX-drag.lx)/Math.max(8,now-drag.lt);drag.lx=e.clientX;drag.lt=now;ang=drag.a+dx*.6;gX=0;gY=0;kick()}}
+ else if(!drag&&e.pointerType==='mouse'&&!RM){gX=-((e.clientY-r.top)/r.height-.5)*7;gY=((e.clientX-r.left)/r.width-.5)*14;kick()}});
+function endDrag(e){if(!drag||e.pointerId!==drag.id)return;var d=drag;drag=null;stage.classList.remove('drag');
+ if(d.moved){justDragged=true;setTimeout(function(){justDragged=false},80);var v=performance.now()-d.lt>90?0:d.v,proj=ang+Math.max(-1.2,Math.min(1.2,v))*60;animateTo(Math.round(proj/180)*180,650)}}
+stage.addEventListener('pointerup',endDrag);stage.addEventListener('pointercancel',endDrag);
+stage.addEventListener('pointerleave',function(){if(!window.ATLAS&&!drag){gX=0;gY=0;kick()}});
+function sizeSlab(){body.style.setProperty('--t',Math.max(6,body.offsetWidth*.06).toFixed(1)+'px')}
+sizeSlab();addEventListener('resize',sizeSlab);render();
+// one slow turn the first time the body comes into view, so people see it is 3D
+if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();setTimeout(function(){if(!drag&&!anim&&ang===0)animateTo(360,2600)},350)}},{threshold:.45});io.observe(stage)}
+function relabel(){document.querySelectorAll('.fig .m').forEach(function(g){g.setAttribute('aria-label',label(g.dataset.g))});if(window.ATLAS)window.onAtlasSide(atlasSd);else render()}
+relabel();
+var _sl=setLang;setLang=function(l){_sl(l);showTip();relabel()};
+var DEF_EN=Object.assign({},EN),DEF_CKB=Object.assign({},CKB);
+document.querySelectorAll('img[data-img]').forEach(function(im){im.dataset.def=im.getAttribute('src')});
+function applyContent(c){if(!c)return;Object.assign(EN,c.en||{});Object.assign(CKB,c.ckb||{});
+ document.querySelectorAll('img[data-img]').forEach(function(im){var v=(c.img||{})[im.dataset.img];
+  var fr=im.closest('.hero2__win,.scene__img')||im;if(v===null){fr.style.display='none'}else{fr.style.display='';if(typeof v==='string'){im.onerror=function(){im.onerror=null;im.src=im.dataset.def};im.src=v}}});
+ setLang(document.documentElement.lang==='ckb'?'ckb':'en')}
+fetch('content.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(applyContent).catch(function(e){console.error('content.json could not be applied',e)}).then(function(){window.BG_READY=true});
+/* redesign behaviour: scroll reveals, hero parallax, the product "day" (sky, clock and cards follow the scroll) */
+(function(){
+ var de=document.documentElement,R=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,fine=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+ var rv=[].slice.call(document.querySelectorAll('#coaching .coach,#story .story,#customers .head,#customers .voices,.findhead,.find,.day2__head'));
+ if('IntersectionObserver' in window&&!R){rv.forEach(function(e){e.setAttribute('data-r','')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  rv.forEach(function(e){io.observe(e)})}else de.classList.remove('js');
+ var d2=document.getElementById('day2');
+ if(d2){var sc=[].slice.call(d2.querySelectorAll('.scene')),clk=document.getElementById('clk'),cl=document.getElementById('clkl'),dots=[].slice.call(d2.querySelectorAll('.dots a')),at=-1;
+  var lab=function(){if(at>=0)cl.textContent=sc[at].querySelector('.tl').textContent};
+  var step=function(i){if(i===at||i<0)return;at=i;d2.setAttribute('data-step',i+1);
+   sc.forEach(function(s,j){s.classList.toggle('on',j===i)});dots.forEach(function(a,j){a.setAttribute('aria-current',j===i?'true':'false')});
+   clk.textContent=sc[i].dataset.time;if(!R&&clk.animate)clk.animate([{opacity:0,transform:'translateY(.35em)'},{opacity:1,transform:'none'}],{duration:450,easing:'cubic-bezier(.2,.8,.2,1)'});lab()};
+  step(0);
+  if('IntersectionObserver' in window){var so=new IntersectionObserver(function(es){var hit=null;es.forEach(function(e){if(e.isIntersecting)hit=e.target});if(hit)step(sc.indexOf(hit))},{rootMargin:'-45% 0px -45% 0px'});sc.forEach(function(s){so.observe(s)})}
+  var _s2=setLang;setLang=function(l){_s2(l);lab()};
+}
+})();/*BG_FILE_NOTE*/
+document.querySelectorAll('a[href=admin]').forEach(function(a){a.addEventListener('click',function(e){if(location.protocol==='file:'){e.preventDefault();alert('The admin needs the small program running.\n\nClose this page, then double-click  Start Bio Guard ADMIN.bat  in the Bio Guard Demo folder.')}})});
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<script type="module">
+//@@ATLAS@@
+</script>
+</body>
+</html>

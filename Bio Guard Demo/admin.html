@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Bio Guard admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Manrope:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2efe7;--card:#fbf9f3;--sand:#e8e4d8;--ink:#141c17;--muted:#5b625c;--green:#1b7a43;--green-d:#13572f;--red:#b3261e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 "Manrope","Segoe UI",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Segoe UI",sans-serif;line-height:1.15}
+button,input,textarea{font:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;border:2px solid var(--green);background:var(--green);color:#fff;font-weight:700;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--green-d)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--sand)}
+.btn--danger{background:transparent;color:var(--red);border-color:var(--red)}
+.btn--danger:hover{background:#f8dedc}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.login{min-height:100vh;display:grid;place-items:center;padding:20px}
+.login form{background:var(--card);border-radius:24px;padding:32px;width:min(420px,100%);display:grid;gap:14px}
+.login h1{font-size:30px}
+.login p{color:var(--muted);font-size:15px}
+input[type=password]{height:48px;border-radius:12px;border:2px solid var(--sand);padding:0 14px;background:#fff}
+.err{color:var(--red);font-weight:600;min-height:22px}
+.top{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid rgba(20,28,23,.12)}
+.top__in{max-width:1000px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.top h1{font-size:22px}
+.acts{display:flex;gap:10px;flex-wrap:wrap}
+main{max-width:1000px;margin:auto;padding:24px 20px 80px;display:grid;gap:28px}
+.note{background:var(--sand);border-radius:16px;padding:14px 18px;font-size:15px;color:var(--muted)}
+.group{background:var(--card);border-radius:24px;padding:24px;display:grid;gap:22px}
+.group>h2{font-size:26px}
+.field{display:grid;gap:8px;padding-top:18px;border-top:1px solid var(--sand)}
+.field:first-of-type{border-top:0;padding-top:0}
+.field label{font-weight:700;font-size:14px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+textarea{width:100%;border-radius:12px;border:2px solid var(--sand);padding:10px 12px;background:#fff;resize:vertical;min-height:48px}
+textarea:focus,input:focus{outline:3px solid rgba(27,122,67,.35);border-color:var(--green)}
+textarea.changed{border-color:var(--green);background:#f3fbf6}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.photo{border:2px solid var(--sand);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.photo__img{aspect-ratio:16/10;background:var(--sand);display:grid;place-items:center;overflow:hidden}
+.photo__img img{width:100%;height:100%;object-fit:cover}
+.photo__img span{color:var(--muted);font-weight:700}
+.photo__bar{padding:12px 14px;display:grid;gap:10px}
+.photo__bar b{font-size:15px}
+.photo__row{display:flex;flex-wrap:wrap;gap:8px}
+.photo__row .btn{min-height:38px;padding:0 14px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .25s;z-index:20}
+.toast.show{opacity:1}
+iframe{position:absolute;width:0;height:0;border:0;visibility:hidden}
+@media(max-width:700px){.two{grid-template-columns:1fr}}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<section class="login hidden" id="login">
+  <form id="lf">
+    <h1>Bio Guard admin</h1>
+    <p>Manager login. Enter the admin password.</p>
+    <input type="password" id="pw" placeholder="Password" autocomplete="current-password" required>
+    <div class="err" id="err" role="alert"></div>
+    <button class="btn" type="submit">Log in</button>
+    <a class="btn btn--ghost" href="/">Back to the website</a>
+  </form>
+</section>
+
+<div id="app" class="hidden">
+  <div class="top"><div class="top__in">
+    <h1>Bio Guard admin</h1>
+    <div class="acts">
+      <a class="btn btn--ghost" href="/" target="_blank" rel="noopener">View website</a>
+      <button class="btn btn--ghost" id="reset" type="button">Reset everything</button>
+      <button class="btn" id="save" type="button">Save changes</button>
+      <button class="btn btn--ghost" id="out" type="button">Log out</button>
+    </div>
+  </div></div>
+  <main>
+    <p class="note">Change a text or a photo, then press <b>Save changes</b>. Fields with a green outline differ from the original. You can use <code>&lt;br&gt;</code> for a new line and <code>&lt;b&gt;</code> for bold. Empty a field to restore the original.</p>
+    <section class="group" id="photosGroup"><h2>Photos</h2><div class="photos" id="photos"></div></section>
+    <div id="texts"></div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<iframe id="site" src="/" title="site" tabindex="-1"></iframe>
+
+<script>
+/*BG_FILE_NOTE*/if(location.protocol==='file:'){document.body.innerHTML='<div style="max-width:520px;margin:12vh auto;padding:0 20px;font:18px/1.6 sans-serif"><h1 style="font-size:28px;margin-bottom:12px">The admin is not running yet</h1><p>This page cannot work by double-clicking it. Close it, then double-click <b>Start Bio Guard ADMIN.bat</b> in the Bio Guard Demo folder. Your browser will open the login page by itself.</p></div>';throw 0}
+var H={'X-Requested-With':'bg'};
+var $=function(i){return document.getElementById(i)};
+var content={en:{},ckb:{},img:{}},site=null,dirty=false;
+function toast(t){var e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(function(){e.classList.remove('show')},2200)}
+function api(p,body){return fetch(p,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H),body:body}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){j.status=r.status;return j})})}
+
+fetch('/api/me').then(function(r){return r.json()}).then(function(j){j.ok?start():$('login').classList.remove('hidden')});
+$('lf').addEventListener('submit',function(e){e.preventDefault();$('err').textContent='';
+ api('/api/login',JSON.stringify({password:$('pw').value})).then(function(j){if(j.ok){$('login').classList.add('hidden');start()}else{$('err').textContent='Wrong password.';$('pw').value=''}})});
+$('out').addEventListener('click',function(){api('/api/logout','{}').then(function(){location.reload()})});
+
+function start(){
+ $('app').classList.remove('hidden');
+ fetch('/content.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){content={en:c.en||{},ckb:c.ckb||{},img:c.img||{}};waitSite()});
+}
+function waitSite(){var f=$('site');
+ (function poll(){var w=f.contentWindow;if(w&&w.BG_READY&&w.DEF_EN){site=w;build()}else setTimeout(poll,150)})()}
+
+var NAMES={header:'Top menu',about:'About',products:'Products',coaching:'Coaching',story:'Our story',customers:'Customers',contact:'Contact and footer',hero:'Top of the page'};
+function groupOf(el){var s=el.closest('section,header,footer');return !s?'hero':(s.id||(s.tagName==='HEADER'?'header':'hero'))}
+
+function build(){
+ var d=site.document,seen={},groups={},order=[];
+ d.querySelectorAll('[data-i]').forEach(function(el){var k=el.dataset.i;if(seen[k])return;seen[k]=1;var g=groupOf(el);if(!groups[g]){groups[g]=[];order.push(g)}groups[g].push(k)});
+ var T=$('texts');T.innerHTML='';
+ order.forEach(function(g){
+  var sec=document.createElement('section');sec.className='group';
+  var h=document.createElement('h2');h.textContent=NAMES[g]||g;sec.appendChild(h);
+  groups[g].forEach(function(k){
+   var f=document.createElement('div');f.className='field';
+   var lab=document.createElement('label');lab.textContent=k;f.appendChild(lab);
+   var two=document.createElement('div');two.className='two';
+   [['en','English'],['ckb','Kurdish']].forEach(function(L){
+    var def=(L[0]==='en'?site.DEF_EN:site.DEF_CKB)[k];
+    var box=document.createElement('div');var l2=document.createElement('label');l2.textContent=L[1];l2.style.fontWeight='600';
+    var ta=document.createElement('textarea');ta.rows=Math.max(2,Math.ceil(((content[L[0]][k]||def||'').length)/46));
+    if(L[0]==='ckb')ta.dir='rtl';
+    ta.value=content[L[0]][k]!==undefined?content[L[0]][k]:(def||'');
+    ta.placeholder=def===undefined?'(no Kurdish text yet)':'';
+    function mark(){ta.classList.toggle('changed',content[L[0]][k]!==undefined)}
+    ta.addEventListener('input',function(){var v=ta.value;if(v.trim()===''||v===def)delete content[L[0]][k];else content[L[0]][k]=v;dirty=true;mark()});
+    mark();box.appendChild(l2);box.appendChild(ta);two.appendChild(box)});
+   f.appendChild(two);sec.appendChild(f)});
+  T.appendChild(sec)});
+ buildPhotos();
+}
+var PHOTO_NAMES={'hero-wall':'Hero photo (top)',day1:'Pre-workout',day2:'Creatine and aminos',day3:'Protein',day4:'Sleep',f1:'Customer message 1',f2:'Customer message 2',f3:'Customer message 3',map11:'Map picture',logo:'Logo (our story section)'};
+function buildPhotos(){
+ var P=$('photos');P.innerHTML='';
+ site.document.querySelectorAll('img[data-img]').forEach(function(im){
+  var id=im.dataset.img,def=im.dataset.def;
+  var card=document.createElement('div');card.className='photo';
+  var box=document.createElement('div');box.className='photo__img';
+  var cur=content.img[id];
+  if(cur===null){var s=document.createElement('span');s.textContent='Photo removed';box.appendChild(s)}
+  else{var i=document.createElement('img');i.src=cur||def;i.alt='';box.appendChild(i)}
+  var bar=document.createElement('div');bar.className='photo__bar';
+  var b=document.createElement('b');b.textContent=PHOTO_NAMES[id]||id;bar.appendChild(b);
+  var row=document.createElement('div');row.className='photo__row';
+  var file=document.createElement('input');file.type='file';file.accept='image/jpeg,image/png,image/webp';file.className='hidden';
+  var rep=document.createElement('button');rep.type='button';rep.className='btn';rep.textContent='Change photo';rep.onclick=function(){file.click()};
+  var rem=document.createElement('button');rem.type='button';rem.className='btn btn--danger';rem.textContent='Remove';rem.onclick=function(){content.img[id]=null;dirty=true;buildPhotos()};
+  var rst=document.createElement('button');rst.type='button';rst.className='btn btn--ghost';rst.textContent='Restore original';rst.onclick=function(){delete content.img[id];dirty=true;buildPhotos()};
+  file.onchange=function(){if(file.files[0])upload(id,file.files[0],rep)};
+  row.appendChild(rep);row.appendChild(rem);if(cur!==undefined)row.appendChild(rst);row.appendChild(file);
+  bar.appendChild(row);card.appendChild(box);card.appendChild(bar);P.appendChild(card)});
+}
+function shrink(file){return new Promise(function(ok,no){
+ var img=new Image(),u=URL.createObjectURL(file);
+ img.onload=function(){var m=1800,s=Math.min(1,m/Math.max(img.width,img.height)),c=document.createElement('canvas');
+  c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  c.toBlob(function(b){URL.revokeObjectURL(u);b?ok(b):no()},'image/jpeg',.86)};
+ img.onerror=function(){no()};img.src=u})}
+function upload(id,file,btn){
+ btn.disabled=true;btn.textContent='Uploading...';
+ shrink(file).then(function(b){return fetch('/api/upload?id='+encodeURIComponent(id),{method:'POST',headers:Object.assign({'Content-Type':'image/jpeg'},H),body:b})})
+ .then(function(r){return r.json()}).then(function(j){
+  if(j.ok){content.img[id]=j.path;dirty=true;buildPhotos();toast('Photo ready. Press Save changes.')}
+  else{toast(j.error||'Upload failed');btn.disabled=false;btn.textContent='Change photo'}})
+ .catch(function(){toast('Could not read that photo');btn.disabled=false;btn.textContent='Change photo'})}
+
+$('save').addEventListener('click',function(){
+ api('/api/content',JSON.stringify(content)).then(function(j){if(j.ok){dirty=false;toast('Saved. The website is updated.')}else toast('Could not save. Log in again.')})});
+$('reset').addEventListener('click',function(){
+ if(!confirm('Put every text and photo back to the original? This is saved immediately.'))return;
+ content={en:{},ckb:{},img:{}};api('/api/content',JSON.stringify(content)).then(function(){build();toast('Everything is back to the original.')})});
+window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue=''}});
+</script>
+</body>
+</html>

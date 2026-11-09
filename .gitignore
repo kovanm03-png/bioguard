@@ -1,0 +1,16 @@
+﻿# Only the website itself is published. Secrets and uploads never go to GitHub.
+*
+!.gitignore
+!README.md
+!index.html
+!share.jpg
+!src/
+!src/**
+!Bio Guard Demo/
+!Bio Guard Demo/**
+!v2-kit-version/
+!v2-kit-version/index.html
+Bio Guard Demo/admin-password.txt
+Bio Guard Demo/uploads/*
+Bio Guard Demo/content.json.tmp
+Bio Guard Demo/assets/
