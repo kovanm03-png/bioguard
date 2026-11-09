@@ -5,12 +5,12 @@ $old=[IO.File]::ReadAllText("$d\v2-kit-version\index.html",[Text.Encoding]::UTF8
 $m=[regex]::Match($old,'var CKB=\{(.*?)\n\};',[Text.RegularExpressions.RegexOptions]::Singleline)
 $t=$t.Replace('@@CKB@@',($m.Groups[1].Value.TrimEnd().TrimEnd(',')+','))
 $t=$t.Replace('//@@ATLAS@@',[IO.File]::ReadAllText("$d\src\atlas.js",[Text.Encoding]::UTF8))
-$t=$t.Replace('@@VIDEO@@','__VID__')
+$t=$t.Replace('@@VIDEO@@','__VID__').Replace('@@VIDEO2@@','__VID2__')
 $srv=$t.Replace('<!--ADMIN-->',' &middot; <a href="admin" style="color:inherit">Admin</a>')
 # the server version uses its own copy of three.js (vendor folder); the single-file version keeps the public CDN
 $srv=$srv.Replace('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js','/vendor/three.module.js').Replace('https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/','/vendor/addons/')
 $sa=$t.Replace('<!--ADMIN-->','')
-$srv=$srv.Replace('__VID__','video/reel.mp4'); $sa=$sa.Replace('__VID__','Bio%20Guard%20Demo/video/reel.mp4')
+$srv=$srv.Replace('__VID2__','video/story.mp4').Replace('__VID__','video/reel.mp4'); $sa=$sa.Replace('__VID2__','Bio%20Guard%20Demo/video/story.mp4'); $sa=$sa.Replace('__VID__','Bio%20Guard%20Demo/video/reel.mp4')
 foreach($f in Get-ChildItem "$d\Bio Guard Demo\img" -File){
  $mime=switch($f.Extension){'.png'{'image/png'}'.webp'{'image/webp'}default{'image/jpeg'}}
  $srv=$srv.Replace('@@'+$f.Name+'@@','img/'+$f.Name)

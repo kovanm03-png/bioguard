@@ -74,7 +74,7 @@ http.createServer(async (req, res) => {
       if (p === '/admin' || p === '/admin/') return sendFile(res, path.join(ROOT, 'admin.html'));
       if (p === '/content.json') return sendFile(res, CONTENT);
       if (/^\/vendor\/(three\.module\.js|addons\/controls\/OrbitControls\.js|addons\/environments\/RoomEnvironment\.js)$/.test(p)) return sendFile(res, path.join(ROOT, p));
-      if (p === '/video/reel.mp4') return sendVideo(req, res, path.join(ROOT, 'video', 'reel.mp4'));
+      if (/^\/video\/(reel|story)\.mp4$/.test(p)) return sendVideo(req, res, path.join(ROOT, 'video', p.slice(7)));
       if (/^\/(img|uploads)\/[\w.-]+$/.test(p)) return sendFile(res, path.join(ROOT, p));
       res.writeHead(404); return res.end('Not found');
     }
