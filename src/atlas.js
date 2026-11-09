@@ -7,14 +7,14 @@ let booted = false;
 function boot() {
   if (booted) return; booted = true;
   const c = navigator.connection || {};
-  if (c.saveData || (navigator.deviceMemory && navigator.deviceMemory <= 2)) return; // keep the light picture version
+  if (c.saveData || (navigator.deviceMemory && navigator.deviceMemory <= 2)) { host.classList.add('stage--fail'); return; } // keep the light picture version
   const load = document.getElementById('load3d');
   if (load) load.hidden = false;
   const idle = new Promise(r => (window.requestIdleCallback ? requestIdleCallback(r, { timeout: 2500 }) : setTimeout(r, 600)));
   const slow = new Promise((_, no) => setTimeout(() => no(new Error('3D library took too long to load')), 25000));
   idle.then(() => Promise.race([Promise.all([import('three'), import('three/addons/controls/OrbitControls.js'), import('three/addons/environments/RoomEnvironment.js')]), slow]))
     .then(m => start(m[0], m[1].OrbitControls, m[2].RoomEnvironment))
-    .catch(err => { console.warn('3D model not available, keeping the picture turntable.', err); if (load) load.hidden = true; });
+    .catch(err => { console.warn('3D model not available, keeping the picture turntable.', err); host.classList.add('stage--fail'); if (load) load.hidden = true; });
 }
 if (host && 'IntersectionObserver' in window) {
   const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); boot(); } }, { rootMargin: '120px' });
@@ -865,7 +865,7 @@ window.addEventListener('blur', () => { engaged = false; });
 /* if the graphics context is lost and does not come back, go back to the picture turntable */
 let lostTimer = 0;
 function loseModel() {
-  running = false; cv.style.visibility = 'hidden'; host.classList.remove('stage--3d'); atip.hidden = true;
+  running = false; cv.style.visibility = 'hidden'; host.classList.remove('stage--3d'); host.classList.add('stage--fail'); atip.hidden = true;
   window.ATLAS = null; if (window.onAtlasLost) window.onAtlasLost();
 }
 cv.addEventListener('webglcontextlost', e => { e.preventDefault(); running = false; lostTimer = setTimeout(loseModel, 3000); });

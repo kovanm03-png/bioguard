@@ -295,6 +295,13 @@ footer .head p{color:rgba(242,239,231,.75)}
 .vbtn.on{background:#8fd6a9;color:#0f1a13;border-color:#8fd6a9}
 .vbtn:focus-visible,.muscles button:focus-visible{outline:3px solid #fff;outline-offset:2px}
 @media(prefers-reduced-motion:reduce){.fig .tint{animation:none;opacity:.35}}
+/* the picture turntable is only a fallback: while the real 3D body loads we show a calm loading state, so the two never flash over each other */
+.js .stage:not(.stage--3d):not(.stage--fail) .body3d,.js .stage:not(.stage--3d):not(.stage--fail) .stage__grid,.js .stage:not(.stage--3d):not(.stage--fail) .stage__floor{display:none}
+.js .stage:not(.stage--3d):not(.stage--fail) .stage__load{top:50%;bottom:auto;translate:-50% -50%;display:block}
+.stage--fail .stage__load,.stage--3d .stage__load{display:none!important}
+.stage__load::before{content:"";display:inline-block;width:12px;height:12px;margin-inline-end:8px;border:2px solid rgba(207,233,216,.35);border-top-color:#cfe9d8;border-radius:50%;animation:spin .8s linear infinite;vertical-align:-2px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.stage__load::before{animation:none}}
 /* real 3D model (three.js) that replaces the turntable once it has loaded */
 .atlas-c{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;animation:atin .7s ease both}
 .atlas-c:active{cursor:grabbing}
@@ -487,7 +494,7 @@ section{padding-block:clamp(24px,4vw,48px)}
               <div class="face face--back" data-side="b"><div class="slab"></div><svg class="fig" viewBox="612 0 612 1086" role="group" aria-label="Back of the body"><defs><image id="imb" href="@@anat-back.webp@@" x="612" y="0" width="612" height="1086"/><mask id="mk-sb" maskUnits="userSpaceOnUse" x="612" y="0" width="612" height="1086"><g class="selg" fill="#fff" filter="url(#fx-soft)"></g></mask><mask id="mk-hb" maskUnits="userSpaceOnUse" x="612" y="0" width="612" height="1086"><g class="hovg" fill="#fff" filter="url(#fx-soft)"></g></mask></defs><use href="#imb"/><use href="#imb" class="shade" filter="url(#fx-blk)"/><g mask="url(#mk-hb)" class="hovw"><use href="#imb" class="hov" filter="url(#fx-lit)"/></g><g filter="url(#fx-glow)"><g mask="url(#mk-sb)"><use href="#imb" class="lit" filter="url(#fx-lit)"/><use href="#imb" class="tint" filter="url(#fx-grn)"/></g></g><g class="hot"></g></svg><div class="dark"></div><div class="sheen"></div></div>
             </div>
             <div class="atip" id="atip" hidden></div>
-            <p class="stage__load" id="load3d" role="status" hidden data-i="anload">Building the 3D model…</p>
+            <p class="stage__load" id="load3d" role="status" data-i="anload">Building the 3D model…</p>
             <p class="stage__hint" data-i="anhint">Drag to turn the body</p>
             <p class="stage__side" id="side" aria-hidden="true"></p>
           </div>
@@ -731,7 +738,7 @@ var atlasSd='f';
 window.onAtlasSide=function(sd){atlasSd=sd;var L=document.documentElement.lang==='ckb'?CKB:EN;sideEl.textContent=L[sd==='f'?'anfront':'anback']||'';
  document.querySelectorAll('.vbtn[data-view]').forEach(function(v){v.classList.toggle('on',(v.dataset.view==='0')===(sd==='f'))})};
 window.onAtlasSpin=function(on){var s=document.getElementById('spin');s.classList.toggle('on',on);s.setAttribute('aria-pressed',on)};
-window.onAtlasLost=function(){var m=document.getElementById('mpick');if(m)m.parentElement.hidden=true;sizeSlab();render();relabel()};
+window.onAtlasLost=function(){stage.classList.add('stage--fail');var m=document.getElementById('mpick');if(m)m.parentElement.hidden=true;sizeSlab();render();relabel()};
 window.onAtlasReady=function(){stage.classList.add('used');if(cur){ATLAS.select(cur,null);ATLAS.focus(cur)}window.onAtlasSide(atlasSd)};
 function setHover(k){if(k===cur)k=null;if(k===hov)return;hov=k;fill('hovg',k)}
 var justDragged=false;
@@ -778,6 +785,7 @@ if('IntersectionObserver' in window&&!RM){var io=new IntersectionObserver(functi
 function relabel(){document.querySelectorAll('.fig .m').forEach(function(g){g.setAttribute('aria-label',label(g.dataset.g))});if(window.ATLAS)window.onAtlasSide(atlasSd);else render()}
 relabel();
 var _sl=setLang;setLang=function(l){_sl(l);showTip();relabel()};
+if('IntersectionObserver' in window){var wio=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){wio.disconnect();setTimeout(function(){if(!stage.classList.contains('stage--3d'))stage.classList.add('stage--fail')},35000)}});wio.observe(stage)}
 var DEF_EN=Object.assign({},EN),DEF_CKB=Object.assign({},CKB);
 document.querySelectorAll('img[data-img]').forEach(function(im){im.dataset.def=im.getAttribute('src')});
 function applyContent(c){if(!c)return;Object.assign(EN,c.en||{});Object.assign(CKB,c.ckb||{});
