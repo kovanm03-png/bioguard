@@ -39,6 +39,23 @@ function cleanContent(c) {
   }
   return out;
 }
+// video: answers byte-range requests so it can start quickly and be seeked (Safari needs this)
+function sendVideo(req, res, file) {
+  fs.stat(file, (err, st) => {
+    if (err) { res.writeHead(404); return res.end('Not found'); }
+    const m = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+    let a = 0, b = st.size - 1, code = 200;
+    if (m && (m[1] || m[2])) {
+      if (m[1]) { a = +m[1]; if (m[2]) b = Math.min(+m[2], b); } else { a = Math.max(0, st.size - +m[2]); }
+      if (a > b || a >= st.size) { res.writeHead(416, { 'Content-Range': 'bytes */' + st.size }); return res.end(); }
+      code = 206;
+    }
+    const h = { 'Content-Type': 'video/mp4', 'Accept-Ranges': 'bytes', 'Content-Length': b - a + 1, 'Cache-Control': 'public, max-age=3600' };
+    if (code === 206) h['Content-Range'] = 'bytes ' + a + '-' + b + '/' + st.size;
+    res.writeHead(code, h);
+    fs.createReadStream(file, { start: a, end: b }).pipe(res);
+  });
+}
 function sendFile(res, file) {
   fs.readFile(file, (err, data) => {
     if (err) { res.writeHead(404); return res.end('Not found'); }
@@ -57,6 +74,7 @@ http.createServer(async (req, res) => {
       if (p === '/admin' || p === '/admin/') return sendFile(res, path.join(ROOT, 'admin.html'));
       if (p === '/content.json') return sendFile(res, CONTENT);
       if (/^\/vendor\/(three\.module\.js|addons\/controls\/OrbitControls\.js|addons\/environments\/RoomEnvironment\.js)$/.test(p)) return sendFile(res, path.join(ROOT, p));
+      if (p === '/video/reel.mp4') return sendVideo(req, res, path.join(ROOT, 'video', 'reel.mp4'));
       if (/^\/(img|uploads)\/[\w.-]+$/.test(p)) return sendFile(res, path.join(ROOT, p));
       res.writeHead(404); return res.end('Not found');
     }

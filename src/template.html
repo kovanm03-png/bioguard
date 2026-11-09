@@ -337,7 +337,28 @@ body::before{content:"";position:fixed;inset:0 0 auto 0;height:3px;z-index:60;ba
 .js [data-r]{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
 .js [data-r].in{opacity:1;transform:none}
 section{padding-block:clamp(24px,4vw,48px)}
-/* customers: a fan of messages */
+/* reel: the Instagram video in a glowing frame */
+.reel{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:center;border-radius:44px;background:var(--ink);color:#f2efe7;padding:clamp(28px,5vw,64px);overflow:hidden;isolation:isolate}
+.reel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 50% 70% at 85% 50%,rgba(143,214,169,.28),transparent 65%),radial-gradient(rgba(255,255,255,.06) 1.3px,transparent 1.6px) 0 0/24px 24px}
+.reel__text{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.reel h2{font-size:clamp(34px,5vw,68px)}
+.reel p{opacity:.85;max-width:28rem}
+.reel .row{display:flex;flex-wrap:wrap;gap:12px}
+.reel .btn--ghost{color:#f2efe7;border-color:rgba(242,239,231,.6)}
+.reel .btn--ghost[aria-pressed=true]{background:var(--mint);color:var(--ink);border-color:var(--mint)}
+.reel__tv{justify-self:center;width:min(100%,640px);transform:rotate(1.6deg);transition:transform .5s ease}
+.reel__tv:hover{transform:rotate(0)}
+.reel__bezel{position:relative;aspect-ratio:4/3;border-radius:30px;overflow:hidden;border:10px solid #1f2a23;background:#000;box-shadow:0 0 0 2px rgba(143,214,169,.35),0 30px 70px rgba(0,0,0,.5),0 0 90px rgba(143,214,169,.18)}
+.reel video{display:block;width:100%;height:100%;object-fit:cover;cursor:pointer}
+.reel__tag{position:absolute;top:14px;inset-inline-start:14px;display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:rgba(11,19,14,.72);color:#fff;font:700 13px/1 var(--text);direction:ltr;pointer-events:none}
+.reel__tag::before{content:"";width:8px;height:8px;border-radius:50%;background:#ff4d4d}
+.reel__play{position:absolute;inset:0;margin:auto;width:84px;height:84px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);font-size:30px;line-height:1;cursor:pointer;transition:transform .2s,opacity .3s}
+.reel__play:hover{transform:scale(1.08)}
+.reel__bezel.playing .reel__play{opacity:0;pointer-events:none}
+.reel__bezel.playing .reel__play:focus-visible{opacity:1}
+.reel__play:focus-visible,.reel .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:900px){.reel{grid-template-columns:1fr}.reel__tv{transform:none;width:100%}}
+@media(prefers-reduced-motion:reduce){.reel__tv{transform:none;transition:none}}/* customers: a fan of messages */
 @media(min-width:801px){
  .voices{display:flex;justify-content:center;padding-block:34px 24px}
  .voice{flex:0 0 31%;max-width:360px;margin-inline:-16px;box-shadow:0 20px 46px rgba(20,28,23,.22);transform:rotate(var(--rot,0deg)) translateY(var(--ty,0px));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
@@ -408,6 +429,29 @@ section{padding-block:clamp(24px,4vw,48px)}
   </section>
   <div class="tick" aria-hidden="true"><div class="tick__t"><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span><span>Raw Nutrition</span><span>Alpha Lion</span><span>Yamamoto</span><span>Since 2004</span><span>Ashti, Sulaymaniyah</span>
   </div></div>
+
+  <section id="reel">
+    <div class="wrap">
+      <div class="reel">
+        <div class="reel__text">
+          <span class="eyebrow" style="background:var(--green);color:#fff" data-i="rk">On Instagram</span>
+          <h2 data-i="rh">See the store in motion</h2>
+          <p data-i="rp">A look inside Bio Guard, straight from our Instagram reels.</p>
+          <div class="row">
+            <a class="btn" href="https://instagram.com/bioguardsuly" data-i="rf">Follow <span class="ltr">@bioguardsuly</span></a>
+            <button type="button" class="btn btn--ghost" id="rsnd" aria-pressed="false">Sound on</button>
+          </div>
+        </div>
+        <div class="reel__tv">
+          <div class="reel__bezel" id="rbz">
+            <video id="reelv" muted loop playsinline preload="none" poster="@@reel-poster.jpg@@" data-src="@@VIDEO@@" aria-label="A reel from the Bio Guard Instagram page"></video>
+            <span class="reel__tag">@bioguardsuly</span>
+            <button type="button" class="reel__play" id="rplay" aria-label="Play video"><span aria-hidden="true">&#9654;</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="about">
     <div class="wrap">
@@ -598,7 +642,7 @@ section{padding-block:clamp(24px,4vw,48px)}
 
 <script>
 var CKB={@@CKB@@
-n0:"دەربارە",ik2:"دەربارەی ئێمە",f1:"کراوەین لە",f2:"هەڵسەنگاندنی گووگڵ",f3:"شوێنکەوتووی ئینستاگرام",f4:"هەموو ڕۆژێک",anh:"هەموو ماسولکەیەک ڕاهێنان پێبکە",anfront:"پێشەوە",anback:"پشتەوە",mu1:"سنگ",mu2:"لاتس",mu11:"ترەپس",mu12:"تەنیشتی ورگ",mu13:"هامسترینگ",anhint:"بۆ سوڕاندنی جەستە ڕایبکێشە",anall:"هەموو ماسولکەکان",anpick:"هەر ماسولکەیەک هەڵبژێرە…",tk1:"پێش ڕاهێنان",tk2:"هەموو ڕۆژێکی ڕاهێنان",tk3:"دوای ڕاهێنان",tk4:"کۆتایی ڕۆژ",ask:"پرسیاری لێ بکە",see:"لە فرۆشگا ببینە",dayscroll:"بۆ ڕۆیشتن بەناو ڕۆژەکەدا بخشێنە.",anload:"مۆدێلی سێ ڕەهەندی ئامادە دەکرێت…",anspin:"بیسوڕێنە",mu3:"شان",mu4:"بایسێپس",mu5:"ترایسێپس",mu6:"ورگ",mu7:"کوادس",anlead:"جەستەکە ڕابکێشە بۆ ئەوەی بیسوڕێنیت، پاشان کلیک لە ماسولکەیەک بکە، یان لە یەکێک لە دوگمەکان، بۆ ڕووناککردنەوەی و بینینی کارەکەی.",n4:"ڕاهێنان",kh0:"ڕاهێنانی ئۆنلاین",kh:"لەگەڵ ڕاهێنەرێک ڕاهێنان بکە، لە هەر شوێنێک بیت.",kp:"لە سلێمانی نیت، یان تەنها دەتەوێت کەسێک ڕێنمایی بکات؟ ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن. پەیوەندی بە هێڵی ڕاهێنان بکە یان نامە بنێرە و ئامانجەکەت پێ بڵێ.",ks1:"پەیوەندی بکە",ks1p:"پەیوەندی بە هێڵی ڕاهێنان بکە یان لە ئینستاگرام نامەمان بۆ بنێرە.",ks2:"ئامانجەکەت پێ بڵێ",ks2p:"گەورەکردنی ماسولکە، کێش دابەزاندن یان بەهێزتربوون: بڵێ چیت دەوێت.",ks3:"بە پلان ڕاهێنان بکە",ks3p:"ڕاهێنەرەکەت بە ئۆنلاین ڕێنماییت دەکات، و فرۆشگاکە ئەو ماددە خۆراکییانەی هەیە کە پێویستتە.",mu8:"ساعید",mu9:"سمت",mu10:"ساق"
+n0:"دەربارە",ik2:"دەربارەی ئێمە",f1:"کراوەین لە",f2:"هەڵسەنگاندنی گووگڵ",f3:"شوێنکەوتووی ئینستاگرام",f4:"هەموو ڕۆژێک",anh:"هەموو ماسولکەیەک ڕاهێنان پێبکە",anfront:"پێشەوە",anback:"پشتەوە",mu1:"سنگ",mu2:"لاتس",mu11:"ترەپس",mu12:"تەنیشتی ورگ",mu13:"هامسترینگ",anhint:"بۆ سوڕاندنی جەستە ڕایبکێشە",anall:"هەموو ماسولکەکان",anpick:"هەر ماسولکەیەک هەڵبژێرە…",rk:"لە ئینستاگرام",rh:"فرۆشگاکە لە جوڵەدا ببینە",rp:"تەماشایەکی ناو بایۆ گارد، ڕاستەوخۆ لە ڕیلەکانی ئینستاگرامەکەمانەوە.",rf:"شوێنکەوتنی <span class=\"ltr\">@bioguardsuly</span>",tk1:"پێش ڕاهێنان",tk2:"هەموو ڕۆژێکی ڕاهێنان",tk3:"دوای ڕاهێنان",tk4:"کۆتایی ڕۆژ",ask:"پرسیاری لێ بکە",see:"لە فرۆشگا ببینە",dayscroll:"بۆ ڕۆیشتن بەناو ڕۆژەکەدا بخشێنە.",anload:"مۆدێلی سێ ڕەهەندی ئامادە دەکرێت…",anspin:"بیسوڕێنە",mu3:"شان",mu4:"بایسێپس",mu5:"ترایسێپس",mu6:"ورگ",mu7:"کوادس",anlead:"جەستەکە ڕابکێشە بۆ ئەوەی بیسوڕێنیت، پاشان کلیک لە ماسولکەیەک بکە، یان لە یەکێک لە دوگمەکان، بۆ ڕووناککردنەوەی و بینینی کارەکەی.",n4:"ڕاهێنان",kh0:"ڕاهێنانی ئۆنلاین",kh:"لەگەڵ ڕاهێنەرێک ڕاهێنان بکە، لە هەر شوێنێک بیت.",kp:"لە سلێمانی نیت، یان تەنها دەتەوێت کەسێک ڕێنمایی بکات؟ ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن. پەیوەندی بە هێڵی ڕاهێنان بکە یان نامە بنێرە و ئامانجەکەت پێ بڵێ.",ks1:"پەیوەندی بکە",ks1p:"پەیوەندی بە هێڵی ڕاهێنان بکە یان لە ئینستاگرام نامەمان بۆ بنێرە.",ks2:"ئامانجەکەت پێ بڵێ",ks2p:"گەورەکردنی ماسولکە، کێش دابەزاندن یان بەهێزتربوون: بڵێ چیت دەوێت.",ks3:"بە پلان ڕاهێنان بکە",ks3p:"ڕاهێنەرەکەت بە ئۆنلاین ڕێنماییت دەکات، و فرۆشگاکە ئەو ماددە خۆراکییانەی هەیە کە پێویستتە.",mu8:"ساعید",mu9:"سمت",mu10:"ساق"
 };
 var EN={},btn=document.getElementById('lang');
 document.querySelectorAll('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -742,6 +786,24 @@ fetch('content.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():n
   if('IntersectionObserver' in window){var so=new IntersectionObserver(function(es){var hit=null;es.forEach(function(e){if(e.isIntersecting)hit=e.target});if(hit)step(sc.indexOf(hit))},{rootMargin:'-45% 0px -45% 0px'});sc.forEach(function(s){so.observe(s)})}
   var _s2=setLang;setLang=function(l){_s2(l);lab()};
 }
+})();/* reel: the video only downloads when it is near the screen, plays while visible, and starts silent */
+(function(){
+ var v=document.getElementById('reelv'),bz=document.getElementById('rbz'),pb=document.getElementById('rplay'),sb=document.getElementById('rsnd');if(!v)return;
+ var R=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,c=navigator.connection||{},calm=R||c.saveData,ready=false,vis=false;
+ var T={en:{on:'Sound on',off:'Sound off',play:'Play video',pause:'Pause video'},ckb:{on:'دەنگ بکەرەوە',off:'دەنگ بکوژێنەوە',play:'پەخشکردن',pause:'ڕاگرتن'}};
+ function L(){return T[document.documentElement.lang==='ckb'?'ckb':'en']}
+ function ui(){var t=L(),p=!v.paused;bz.classList.toggle('playing',p);pb.setAttribute('aria-label',p?t.pause:t.play);sb.textContent=v.muted?t.on:t.off;sb.setAttribute('aria-pressed',v.muted?'false':'true')}
+ function load(){if(!ready){ready=true;v.src=v.dataset.src}}
+ function play(){load();var r=v.play();if(r&&r.catch)r.catch(function(){});}
+ function toggle(){if(v.paused)play();else v.pause()}
+ pb.addEventListener('click',toggle);v.addEventListener('click',toggle);
+ sb.addEventListener('click',function(){v.muted=!v.muted;if(!v.muted&&v.paused)play();ui()});
+ v.addEventListener('play',ui);v.addEventListener('pause',ui);
+ if('IntersectionObserver' in window){
+  new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)load()})},{rootMargin:'400px'}).observe(bz);
+  new IntersectionObserver(function(es){es.forEach(function(e){vis=e.isIntersecting;if(vis){if(!calm&&!userPaused)play()}else v.pause()})},{threshold:.4}).observe(bz)}
+ var userPaused=false;v.addEventListener('pause',function(){if(vis)userPaused=true});v.addEventListener('play',function(){userPaused=false});
+ var _s3=setLang;setLang=function(l){_s3(l);ui()};ui();
 })();/*BG_FILE_NOTE*/
 document.querySelectorAll('a[href=admin]').forEach(function(a){a.addEventListener('click',function(e){if(location.protocol==='file:'){e.preventDefault();alert('The admin needs the small program running.\n\nClose this page, then double-click  Start Bio Guard ADMIN.bat  in the Bio Guard Demo folder.')}})});
 </script>
