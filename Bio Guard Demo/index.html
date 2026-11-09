@@ -1310,26 +1310,16 @@ float vn(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f*f*(3.-2.*f);
 float fibre(vec2 q){ return .55*vn(q) + .3*vn(q*vec2(2.1,1.6)+7.3) + .15*vn(q*vec2(4.3,2.5)+3.1); }
 float coarse(vec2 q){ return .62*vn(q*vec2(.21,.42)+11.7) + .38*vn(q*vec2(.47,.8)+5.2); }`)
       .replace('#include <color_fragment>', `#include <color_fragment>
-vec3 nO = normalize(vObjN);
-vec3 fO = vFib + vec3(1e-4, 2e-4, 3e-4); fO = normalize(fO - nO * dot(fO, nO));
-vec3 bO = cross(nO, fO);
 float fScale = mix(560.0, 820.0, vTend);
 vec2 fq = vec2(vFuv.x * fScale, vFuv.y * 26.0);
 float fw = fwidth(fq.x);
 float fFine = 1.0 - smoothstep(0.3, 0.85, fw);
 float fCoarse = 1.0 - smoothstep(1.5, 5.0, fw);
-float hf = fibre(fq);
-float hc = coarse(fq);
-float dF = (fibre(fq + vec2(0.3, 0.0)) - hf) / 0.3;
-float dC = (coarse(fq + vec2(1.4, 0.0)) - hc) / 1.4;
-float fh = mix(0.5, hf, fFine) * 0.45 + mix(0.5, hc, fCoarse) * 0.55;
-float fSlope = dF * fFine * 0.7 + dC * fCoarse * 1.6;
-diffuseColor.rgb *= mix(1.0, 0.98 + 0.95 * (fh - 0.5), mix(1.0, 0.45, vTend));`)
+float hc = fCoarse > 0.02 ? coarse(fq) : 0.5;
+float hf = fFine > 0.02 ? fibre(fq) : 0.5;
+float fh = mix(0.5, hf, fFine) * 0.45 + mix(0.5, hc, fCoarse) * 0.55;diffuseColor.rgb *= mix(1.0, 0.98 + 0.95 * (fh - 0.5), mix(1.0, 0.45, vTend));`)
       .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
 roughnessFactor *= mix(1.0, 0.62, vTend);`)
-      .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
-vec3 bV = normalize((viewMatrix * vec4(bO, 0.0)).xyz);
-normal = normalize(normal - bV * fSlope * 0.42 * mix(1.0, 0.5, vTend));`)
       .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
 float sG = uGrp > -0.5 ? 1.0 - step(0.5, abs(vGrp - uGrp)) : 0.0;
 float sE = uEid > -0.5 ? 1.0 - step(0.5, abs(vEid - uEid)) : 0.0;
@@ -1339,7 +1329,7 @@ diffuseColor.rgb *= mix(1.0, 0.26, uDim * (1.0 - isSel));
 totalEmissiveRadiance += vec3(1.0, 0.42, 0.16) * 0.24 * isHov;
 totalEmissiveRadiance += vec3(0.28, 1.0, 0.55) * 0.34 * isSel * uDim;`);
   };
-  m.customProgramCacheKey = () => 'skin2';
+  m.customProgramCacheKey = () => 'skin3';
   return m;
 }
 const matSkin = skinMat();
@@ -1621,15 +1611,15 @@ scene.environmentIntensity = 0.38;
   x.fillStyle = g; x.fillRect(0, 0, 64, 512);
   const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; scene.background = t;
 })();
-scene.add(new THREE.HemisphereLight(0xfffaf5, 0x6e4a3e, 0.45));
+scene.add(new THREE.HemisphereLight(0xfffaf5, 0x6e4a3e, 0.75));
 const key = new THREE.DirectionalLight(0xfff3e8, 2.9); key.position.set(2.4, 4.0, 3.2);
 key.castShadow = false; key.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048);
 Object.assign(key.shadow.camera, { left: -1.1, right: 1.1, top: 2.0, bottom: -0.2, near: 0.5, far: 12 });
 key.shadow.bias = -0.0002; key.shadow.normalBias = 0.015; key.shadow.radius = 5;
 scene.add(key);
-const fillL = new THREE.DirectionalLight(0xe2eaff, 0.5); fillL.position.set(-3, 2, 2.4); scene.add(fillL);
+
 const rimL = new THREE.DirectionalLight(0xffffff, 1.1); rimL.position.set(-0.6, 3, -4); scene.add(rimL);
-const rim2 = new THREE.DirectionalLight(0xffe8dc, 0.6); rim2.position.set(3, 1.5, -3); scene.add(rim2);
+
 { // soft blob under the feet
   const c = document.createElement('canvas'); c.width = c.height = 128; const x = c.getContext('2d');
   const g = x.createRadialGradient(64, 64, 0, 64, 64, 64); g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
