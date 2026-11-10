@@ -375,7 +375,14 @@ section{padding-block:clamp(24px,4vw,48px)}
 .reel__bezel.playing .reel__play:focus-visible{opacity:1}
 .reel__play:focus-visible,.reel .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 @media(max-width:900px){.reel{grid-template-columns:1fr}.reel__tv{transform:none;width:100%}}
-@media(prefers-reduced-motion:reduce){.reel__tv{transform:none;transition:none}}/* customers: a fan of messages */
+@media(prefers-reduced-motion:reduce){.reel__tv{transform:none;transition:none}}/* gallery: photos added from the admin page */
+#gallery[hidden]{display:none}
+.gal{columns:3 260px;column-gap:16px}
+.gal__i{display:block;width:100%;margin:0 0 16px;padding:0;border:0;border-radius:22px;overflow:hidden;cursor:zoom-in;break-inside:avoid;background:var(--card);transition:transform .25s}
+.gal__i:hover{transform:translateY(-3px)}
+.gal__i:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.gal__i img{width:100%;height:auto}
+/* customers: a fan of messages */
 @media(min-width:801px){
  .voices{display:flex;justify-content:center;padding-block:34px 24px}
  .voice{flex:0 0 31%;max-width:360px;margin-inline:-16px;box-shadow:0 20px 46px rgba(20,28,23,.22);transform:rotate(var(--rot,0deg)) translateY(var(--ty,0px));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
@@ -629,6 +636,12 @@ section{padding-block:clamp(24px,4vw,48px)}
       <dialog id="lb" aria-label="Customer message"><button type="button" id="lbx" aria-label="Close">×</button><img alt=""></dialog>
     </div>
   </section>
+  <section id="gallery" hidden>
+    <div class="wrap">
+      <div class="head"><h2 data-i="gh">Gallery</h2><p data-i="gp">More from Bio Guard.</p></div>
+      <div class="gal" id="galgrid"></div>
+    </div>
+  </section>
 </main>
 
 <footer id="contact">
@@ -665,7 +678,7 @@ section{padding-block:clamp(24px,4vw,48px)}
 
 <script>
 var CKB={@@CKB@@
-n0:"دەربارە",ik2:"دەربارەی ئێمە",f1:"کراوەین لە",f2:"هەڵسەنگاندنی گووگڵ",f3:"شوێنکەوتووی ئینستاگرام",f4:"هەموو ڕۆژێک",anh:"هەموو ماسولکەیەک ڕاهێنان پێبکە",anfront:"پێشەوە",anback:"پشتەوە",mu1:"سنگ",mu2:"لاتس",mu11:"ترەپس",mu12:"تەنیشتی ورگ",mu13:"هامسترینگ",anhint:"بۆ سوڕاندنی جەستە ڕایبکێشە",anall:"هەموو ماسولکەکان",anpick:"هەر ماسولکەیەک هەڵبژێرە…",rk:"لە ئینستاگرام",rh:"فرۆشگاکە لە جوڵەدا ببینە",rp:"تەماشایەکی ناو بایۆ گارد، ڕاستەوخۆ لە ڕیلەکانی ئینستاگرامەکەمانەوە.",rf:"شوێنکەوتنی <span class=\"ltr\">@bioguardsuly</span>",tk1:"پێش ڕاهێنان",tk2:"هەموو ڕۆژێکی ڕاهێنان",tk3:"دوای ڕاهێنان",tk4:"کۆتایی ڕۆژ",ask:"پرسیاری لێ بکە",see:"لە فرۆشگا ببینە",dayscroll:"بۆ ڕۆیشتن بەناو ڕۆژەکەدا بخشێنە.",anload:"مۆدێلی سێ ڕەهەندی ئامادە دەکرێت…",anspin:"بیسوڕێنە",mu3:"شان",mu4:"بایسێپس",mu5:"ترایسێپس",mu6:"ورگ",mu7:"کوادس",anlead:"جەستەکە ڕابکێشە بۆ ئەوەی بیسوڕێنیت، پاشان کلیک لە ماسولکەیەک بکە، یان لە یەکێک لە دوگمەکان، بۆ ڕووناککردنەوەی و بینینی کارەکەی.",n4:"ڕاهێنان",kh0:"ڕاهێنانی ئۆنلاین",kh:"لەگەڵ ڕاهێنەرێک ڕاهێنان بکە، لە هەر شوێنێک بیت.",kp:"لە سلێمانی نیت، یان تەنها دەتەوێت کەسێک ڕێنمایی بکات؟ ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن. پەیوەندی بە هێڵی ڕاهێنان بکە یان نامە بنێرە و ئامانجەکەت پێ بڵێ.",ks1:"پەیوەندی بکە",ks1p:"پەیوەندی بە هێڵی ڕاهێنان بکە یان لە ئینستاگرام نامەمان بۆ بنێرە.",ks2:"ئامانجەکەت پێ بڵێ",ks2p:"گەورەکردنی ماسولکە، کێش دابەزاندن یان بەهێزتربوون: بڵێ چیت دەوێت.",ks3:"بە پلان ڕاهێنان بکە",ks3p:"ڕاهێنەرەکەت بە ئۆنلاین ڕێنماییت دەکات، و فرۆشگاکە ئەو ماددە خۆراکییانەی هەیە کە پێویستتە.",mu8:"ساعید",mu9:"سمت",mu10:"ساق"
+n0:"دەربارە",ik2:"دەربارەی ئێمە",f1:"کراوەین لە",f2:"هەڵسەنگاندنی گووگڵ",f3:"شوێنکەوتووی ئینستاگرام",f4:"هەموو ڕۆژێک",anh:"هەموو ماسولکەیەک ڕاهێنان پێبکە",anfront:"پێشەوە",anback:"پشتەوە",mu1:"سنگ",mu2:"لاتس",mu11:"ترەپس",mu12:"تەنیشتی ورگ",mu13:"هامسترینگ",anhint:"بۆ سوڕاندنی جەستە ڕایبکێشە",anall:"هەموو ماسولکەکان",anpick:"هەر ماسولکەیەک هەڵبژێرە…",rk:"لە ئینستاگرام",rh:"فرۆشگاکە لە جوڵەدا ببینە",rp:"تەماشایەکی ناو بایۆ گارد، ڕاستەوخۆ لە ڕیلەکانی ئینستاگرامەکەمانەوە.",rf:"شوێنکەوتنی <span class=\"ltr\">@bioguardsuly</span>",gh:"گەلەری",gp:"زیاتر لە بایۆ گارد.",tk1:"پێش ڕاهێنان",tk2:"هەموو ڕۆژێکی ڕاهێنان",tk3:"دوای ڕاهێنان",tk4:"کۆتایی ڕۆژ",ask:"پرسیاری لێ بکە",see:"لە فرۆشگا ببینە",dayscroll:"بۆ ڕۆیشتن بەناو ڕۆژەکەدا بخشێنە.",anload:"مۆدێلی سێ ڕەهەندی ئامادە دەکرێت…",anspin:"بیسوڕێنە",mu3:"شان",mu4:"بایسێپس",mu5:"ترایسێپس",mu6:"ورگ",mu7:"کوادس",anlead:"جەستەکە ڕابکێشە بۆ ئەوەی بیسوڕێنیت، پاشان کلیک لە ماسولکەیەک بکە، یان لە یەکێک لە دوگمەکان، بۆ ڕووناککردنەوەی و بینینی کارەکەی.",n4:"ڕاهێنان",kh0:"ڕاهێنانی ئۆنلاین",kh:"لەگەڵ ڕاهێنەرێک ڕاهێنان بکە، لە هەر شوێنێک بیت.",kp:"لە سلێمانی نیت، یان تەنها دەتەوێت کەسێک ڕێنمایی بکات؟ ڕاهێنەرەکانمان بە ئۆنلاین لەگەڵتدا کار دەکەن. پەیوەندی بە هێڵی ڕاهێنان بکە یان نامە بنێرە و ئامانجەکەت پێ بڵێ.",ks1:"پەیوەندی بکە",ks1p:"پەیوەندی بە هێڵی ڕاهێنان بکە یان لە ئینستاگرام نامەمان بۆ بنێرە.",ks2:"ئامانجەکەت پێ بڵێ",ks2p:"گەورەکردنی ماسولکە، کێش دابەزاندن یان بەهێزتربوون: بڵێ چیت دەوێت.",ks3:"بە پلان ڕاهێنان بکە",ks3p:"ڕاهێنەرەکەت بە ئۆنلاین ڕێنماییت دەکات، و فرۆشگاکە ئەو ماددە خۆراکییانەی هەیە کە پێویستتە.",mu8:"ساعید",mu9:"سمت",mu10:"ساق"
 };
 var EN={},btn=document.getElementById('lang');
 document.querySelectorAll('[data-i]').forEach(function(e){if(!(e.dataset.i in EN))EN[e.dataset.i]=e.innerHTML});
@@ -788,7 +801,11 @@ var _sl=setLang;setLang=function(l){_sl(l);showTip();relabel()};
 if('IntersectionObserver' in window){var wio=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){wio.disconnect();setTimeout(function(){if(!stage.classList.contains('stage--3d'))stage.classList.add('stage--fail')},35000)}});wio.observe(stage)}
 var DEF_EN=Object.assign({},EN),DEF_CKB=Object.assign({},CKB);
 document.querySelectorAll('img[data-img]').forEach(function(im){im.dataset.def=im.getAttribute('src')});
-function applyContent(c){if(!c)return;Object.assign(EN,c.en||{});Object.assign(CKB,c.ckb||{});
+function buildGallery(list){var s=document.getElementById('gallery'),g=document.getElementById('galgrid');if(!s||!g)return;g.innerHTML='';
+ (list||[]).forEach(function(src,i){if(!/^uploads\/[\w.-]+$/.test(src))return;var b=document.createElement('button');b.type='button';b.className='gal__i';b.setAttribute('aria-label','Open photo '+(i+1));
+  var im=document.createElement('img');im.src=src;im.alt='Bio Guard photo '+(i+1);im.loading='lazy';im.decoding='async';b.appendChild(im);
+  b.addEventListener('click',function(){var t=lb.querySelector('img');t.src=im.src;t.alt=im.alt;lb.showModal()});g.appendChild(b)});s.hidden=!g.children.length}
+function applyContent(c){if(!c)return;buildGallery(c.gallery);Object.assign(EN,c.en||{});Object.assign(CKB,c.ckb||{});
  document.querySelectorAll('img[data-img]').forEach(function(im){var v=(c.img||{})[im.dataset.img];
   var fr=im.closest('.hero2__win,.scene__img')||im;if(v===null){fr.style.display='none'}else{fr.style.display='';if(typeof v==='string'){im.onerror=function(){im.onerror=null;im.src=im.dataset.def};im.src=v}}});
  setLang(document.documentElement.lang==='ckb'?'ckb':'en')}

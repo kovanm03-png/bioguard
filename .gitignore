@@ -1,9 +1,13 @@
-﻿# Only the website itself is published. Secrets and uploads never go to GitHub.
+# Only the website itself is published. Secrets and uploads never go to GitHub.
 *
 !.gitignore
 !README.md
 !index.html
 !share.jpg
+!package.json
+!wrangler.jsonc
+!worker/
+!worker/**
 !src/
 !src/**
 !Bio Guard Demo/

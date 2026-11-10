@@ -1,0 +1,8 @@
+serve.js
+package.json
+content.json
+admin-password.txt
+.gitignore
+.assetsignore
+*.bat
+uploads

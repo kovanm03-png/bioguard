@@ -30,13 +30,14 @@ function cleanText(s) {
   return s.replace(/&lt;(\/?)(br|b|strong|em)\s*\/?&gt;/gi, (m, c, t) => '<' + c + t.toLowerCase() + '>');
 }
 function cleanContent(c) {
-  const out = { en: {}, ckb: {}, img: {} };
+  const out = { en: {}, ckb: {}, img: {}, gallery: [] };
   for (const L of ['en', 'ckb']) for (const [k, v] of Object.entries((c && c[L]) || {})) if (/^[\w-]{1,40}$/.test(k) && typeof v === 'string') out[L][k] = cleanText(v);
   for (const [k, v] of Object.entries((c && c.img) || {})) {
     if (!/^[\w-]{1,60}$/.test(k)) continue;
     if (v === null) out.img[k] = null;
     else if (typeof v === 'string' && /^(img|uploads)\/[\w.-]{1,120}$/.test(v)) out.img[k] = v;
   }
+  if (c && Array.isArray(c.gallery)) for (const v of c.gallery.slice(0, 24)) if (typeof v === 'string' && /^uploads\/[\w.-]{1,120}$/.test(v)) out.gallery.push(v);
   return out;
 }
 // video: answers byte-range requests so it can start quickly and be seeked (Safari needs this)

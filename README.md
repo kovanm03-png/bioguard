@@ -1,7 +1,18 @@
-﻿# Bio Guard website demo
+# Bio Guard website
 
 Bilingual (English and Kurdish Sorani, RTL) website for Bio Guard, a supplement and gym store in Sulaymaniyah.
 
-- `index.html` is the whole site as one file. Open it in a browser, or host it on GitHub Pages.
-- `Bio Guard Demo/` is the version with the admin panel (needs Node.js): run `node serve.js`, then open http://localhost:5180 and http://localhost:5180/admin. Set the admin password with the `ADMIN_PASSWORD` environment variable or an `admin-password.txt` file (never commit that file).
+## How it is published
+Cloudflare builds this repository on every push (`wrangler.jsonc`). It serves the `Bio Guard Demo/` folder as the website and runs `worker/index.js` for the admin panel.
+
+- Website: `/`
+- Admin panel: `/admin` (the Admin link is also in the footer). Manager can edit every text (English and Kurdish), replace or remove photos, and add gallery photos.
+- Saved edits and uploaded photos live in a Workers KV namespace named `BG_KV` (created automatically on the first deploy). They are not in Git.
+
+## Admin password
+The password hash is in `wrangler.jsonc` (`ADMIN_PASSWORD_HASH`). To change it without touching code, add a **secret** called `ADMIN_PASSWORD` to the Worker in the Cloudflare dashboard (Settings > Variables and Secrets); it takes priority. Anyone can read this repository's files, so use a long password and set it as a secret.
+
+## Other folders
+- `Bio Guard Demo/` also runs locally with Node.js: `node serve.js`, then open http://localhost:5180 and http://localhost:5180/admin (password in `admin-password.txt`, never commit that file).
+- `index.html` (root) is the whole site as a single file for quick previews. It has no admin.
 - `src/` has the editable source (`template.html`, `admin.html`, `atlas.js`) and `build.ps1`, which builds the files above.

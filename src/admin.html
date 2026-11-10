@@ -81,6 +81,11 @@ iframe{position:absolute;width:0;height:0;border:0;visibility:hidden}
   <main>
     <p class="note">Change a text or a photo, then press <b>Save changes</b>. Fields with a green outline differ from the original. You can use <code>&lt;br&gt;</code> for a new line and <code>&lt;b&gt;</code> for bold. Empty a field to restore the original.</p>
     <section class="group" id="photosGroup"><h2>Photos</h2><div class="photos" id="photos"></div></section>
+    <section class="group" id="galGroup"><h2>Gallery (add more photos)</h2>
+      <p class="note">Photos you add here appear in a <b>Gallery</b> section on the website, above the footer. Remove every photo and the section disappears. Up to 24 photos.</p>
+      <div class="photos" id="gal"></div>
+      <div><button class="btn" type="button" id="galAdd">Add photos</button><input type="file" id="galFile" class="hidden" accept="image/jpeg,image/png,image/webp" multiple></div>
+    </section>
     <div id="texts"></div>
   </main>
 </div>
@@ -91,7 +96,7 @@ iframe{position:absolute;width:0;height:0;border:0;visibility:hidden}
 /*BG_FILE_NOTE*/if(location.protocol==='file:'){document.body.innerHTML='<div style="max-width:520px;margin:12vh auto;padding:0 20px;font:18px/1.6 sans-serif"><h1 style="font-size:28px;margin-bottom:12px">The admin is not running yet</h1><p>This page cannot work by double-clicking it. Close it, then double-click <b>Start Bio Guard ADMIN.bat</b> in the Bio Guard Demo folder. Your browser will open the login page by itself.</p></div>';throw 0}
 var H={'X-Requested-With':'bg'};
 var $=function(i){return document.getElementById(i)};
-var content={en:{},ckb:{},img:{}},site=null,dirty=false;
+var content={en:{},ckb:{},img:{},gallery:[]},site=null,dirty=false;
 function toast(t){var e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(function(){e.classList.remove('show')},2200)}
 function api(p,body){return fetch(p,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H),body:body}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){j.status=r.status;return j})})}
 
@@ -102,12 +107,12 @@ $('out').addEventListener('click',function(){api('/api/logout','{}').then(functi
 
 function start(){
  $('app').classList.remove('hidden');
- fetch('/content.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){content={en:c.en||{},ckb:c.ckb||{},img:c.img||{}};waitSite()});
+ fetch('/content.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(c){content={en:c.en||{},ckb:c.ckb||{},img:c.img||{},gallery:c.gallery||[]};waitSite()});
 }
 function waitSite(){var f=$('site');
  (function poll(){var w=f.contentWindow;if(w&&w.BG_READY&&w.DEF_EN){site=w;build()}else setTimeout(poll,150)})()}
 
-var NAMES={header:'Top menu',about:'About',products:'Products',coaching:'Coaching',story:'Our story',customers:'Customers',contact:'Contact and footer',hero:'Top of the page'};
+var NAMES={header:'Top menu',about:'About',products:'Products',coaching:'Coaching',story:'Our story',customers:'Customers',contact:'Contact and footer',hero:'Top of the page',gallery:'Gallery (title)',reel:'Instagram video section'};
 function groupOf(el){var s=el.closest('section,header,footer');return !s?'hero':(s.id||(s.tagName==='HEADER'?'header':'hero'))}
 
 function build(){
@@ -133,9 +138,9 @@ function build(){
     mark();box.appendChild(l2);box.appendChild(ta);two.appendChild(box)});
    f.appendChild(two);sec.appendChild(f)});
   T.appendChild(sec)});
- buildPhotos();
+ buildPhotos();buildGal();
 }
-var PHOTO_NAMES={'hero-wall':'Hero photo (top)',day1:'Pre-workout',day2:'Creatine and aminos',day3:'Protein',day4:'Sleep',f1:'Customer message 1',f2:'Customer message 2',f3:'Customer message 3',map11:'Map picture',logo:'Logo (our story section)'};
+var PHOTO_NAMES={'hero-wall':'Hero photo (top)',day1:'Pre-workout',day2:'Creatine and aminos',day3:'Protein',day4:'Sleep',f1:'Customer message 1',f2:'Customer message 2',f3:'Customer message 3',map11:'Map picture'};
 function buildPhotos(){
  var P=$('photos');P.innerHTML='';
  site.document.querySelectorAll('img[data-img]').forEach(function(im){
@@ -156,6 +161,32 @@ function buildPhotos(){
   row.appendChild(rep);row.appendChild(rem);if(cur!==undefined)row.appendChild(rst);row.appendChild(file);
   bar.appendChild(row);card.appendChild(box);card.appendChild(bar);P.appendChild(card)});
 }
+function buildGal(){
+ var G=$('gal');G.innerHTML='';
+ content.gallery.forEach(function(src,i){
+  var card=document.createElement('div');card.className='photo';
+  var box=document.createElement('div');box.className='photo__img';var im=document.createElement('img');im.src=src;im.alt='';box.appendChild(im);
+  var bar=document.createElement('div');bar.className='photo__bar';var b=document.createElement('b');b.textContent='Photo '+(i+1);bar.appendChild(b);
+  var row=document.createElement('div');row.className='photo__row';
+  function mk(t,cls,fn,off){var x=document.createElement('button');x.type='button';x.className='btn '+cls;x.textContent=t;x.disabled=!!off;x.onclick=fn;row.appendChild(x)}
+  mk('← Earlier','btn--ghost',function(){var g=content.gallery;g.splice(i-1,0,g.splice(i,1)[0]);dirty=true;buildGal()},i===0);
+  mk('Later →','btn--ghost',function(){var g=content.gallery;g.splice(i+1,0,g.splice(i,1)[0]);dirty=true;buildGal()},i===content.gallery.length-1);
+  mk('Remove','btn--danger',function(){content.gallery.splice(i,1);dirty=true;buildGal()});
+  bar.appendChild(row);card.appendChild(box);card.appendChild(bar);G.appendChild(card)});
+ if(!content.gallery.length){var e=document.createElement('p');e.className='note';e.textContent='No gallery photos yet. Press Add photos.';G.appendChild(e)}
+}
+function addGalleryFiles(files){
+ var list=[].slice.call(files),btn=$('galAdd');if(!list.length)return;
+ btn.disabled=true;
+ (function next(){var f=list.shift();
+  if(!f||content.gallery.length>=24){btn.disabled=false;btn.textContent='Add photos';buildGal();toast(content.gallery.length>=24&&f?'Gallery is full (24 photos).':'Photos ready. Press Save changes.');return}
+  btn.textContent='Uploading... ('+(list.length+1)+' left)';
+  shrink(f).then(function(b){return fetch('/api/upload?id=gallery',{method:'POST',headers:Object.assign({'Content-Type':'image/jpeg'},H),body:b})})
+  .then(function(r){return r.json()}).then(function(j){if(j.ok){content.gallery.push(j.path);dirty=true}else toast(j.error||'Upload failed');next()})
+  .catch(function(){toast('Could not read one of the photos');next()})})();
+}
+$('galAdd').addEventListener('click',function(){$('galFile').click()});
+$('galFile').addEventListener('change',function(){addGalleryFiles($('galFile').files);$('galFile').value=''});
 function shrink(file){return new Promise(function(ok,no){
  var img=new Image(),u=URL.createObjectURL(file);
  img.onload=function(){var m=1800,s=Math.min(1,m/Math.max(img.width,img.height)),c=document.createElement('canvas');
@@ -174,7 +205,7 @@ $('save').addEventListener('click',function(){
  api('/api/content',JSON.stringify(content)).then(function(j){if(j.ok){dirty=false;toast('Saved. The website is updated.')}else toast('Could not save. Log in again.')})});
 $('reset').addEventListener('click',function(){
  if(!confirm('Put every text and photo back to the original? This is saved immediately.'))return;
- content={en:{},ckb:{},img:{}};api('/api/content',JSON.stringify(content)).then(function(){build();toast('Everything is back to the original.')})});
+ content={en:{},ckb:{},img:{},gallery:[]};api('/api/content',JSON.stringify(content)).then(function(){build();toast('Everything is back to the original.')})});
 window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue=''}});
 </script>
 </body>

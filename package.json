@@ -1,0 +1,9 @@
+{
+  "name": "bioguard",
+  "private": true,
+  "type": "module",
+  "description": "Bio Guard website: static site plus a small Cloudflare Worker for the admin panel",
+  "devDependencies": {
+    "wrangler": "^4.45.0"
+  }
+}
