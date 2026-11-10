@@ -54,7 +54,7 @@ function sendVideo(req, res, file) {
     const h = { 'Content-Type': 'video/mp4', 'Accept-Ranges': 'bytes', 'Content-Length': b - a + 1, 'Cache-Control': 'public, max-age=3600' };
     if (code === 206) h['Content-Range'] = 'bytes ' + a + '-' + b + '/' + st.size;
     res.writeHead(code, h);
-    fs.createReadStream(file, { start: a, end: b }).pipe(res);
+    fs.createReadStream(file, { start: a, end: b }).on('error', e => { console.error('video read failed', e.message); res.destroy(); }).pipe(res);
   });
 }
 function sendFile(res, file) {
@@ -71,7 +71,16 @@ http.createServer(async (req, res) => {
   try {
     if (req.method === 'GET') {
       if (p === '/api/me') return json(res, 200, { ok: authed(req) });
-      if (p === '/' || p === '/index.html') return sendFile(res, path.join(ROOT, 'index.html'));
+      if (p === '/' || p === '/index.html') {
+        // the page carries __ORIGIN__ where link previews need the full web address (the Cloudflare Worker does the same)
+        const proto = req.headers['x-forwarded-proto'] === 'https' ? 'https' : 'http';
+        const origin = proto + '://' + String(req.headers.host || 'localhost:' + PORT).replace(/[^\w.:\-\[\]]/g, '');
+        return fs.readFile(path.join(ROOT, 'index.html'), 'utf8', (err, html) => {
+          if (err) { res.writeHead(404); return res.end('Not found'); }
+          res.writeHead(200, { 'Content-Type': TYPES['.html'], 'Cache-Control': 'no-cache' });
+          res.end(html.split('__ORIGIN__').join(origin));
+        });
+      }
       if (p === '/admin' || p === '/admin/') return sendFile(res, path.join(ROOT, 'admin.html'));
       if (p === '/content.json') return sendFile(res, CONTENT);
       if (/^\/vendor\/(three\.module\.js|addons\/controls\/OrbitControls\.js|addons\/environments\/RoomEnvironment\.js)$/.test(p)) return sendFile(res, path.join(ROOT, p));
@@ -118,7 +127,11 @@ http.createServer(async (req, res) => {
       }
     }
     res.writeHead(404); res.end('Not found');
-  } catch (e) { json(res, 400, { ok: false, error: 'Bad request' }); }
+  } catch (e) {
+    if (e instanceof SyntaxError) return json(res, 400, { ok: false, error: 'Bad request' });
+    console.error('server error', req.method, p, e);
+    json(res, e.message === 'too big' ? 413 : 500, { ok: false, error: e.message === 'too big' ? 'That is too big.' : 'The server could not do that.' });
+  }
 }).listen(PORT, '0.0.0.0', () => {
   console.log('\n  Bio Guard demo is running.\n');
   console.log('  Website (this computer):  http://localhost:' + PORT);

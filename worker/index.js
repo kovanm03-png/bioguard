@@ -17,10 +17,22 @@ const passwordHash = async env => env.ADMIN_PASSWORD ? sha256(env.ADMIN_PASSWORD
 
 const json = (code, obj, extra) => new Response(JSON.stringify(obj), { status: code, headers: Object.assign({ 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }, extra || {}) });
 const cookieOf = req => { const m = /(?:^|;\s*)bg_admin=([\w.-]+)/.exec(req.headers.get('Cookie') || ''); return m && m[1]; };
+// Sessions are signed with a random key that only this Worker can read (kept in KV, or the secret SESSION_SECRET if one is set).
+// It must never be derived from the password hash: that hash is in the public repository.
+async function sessionKey(env) {
+  if (env.SESSION_SECRET) return String(env.SESSION_SECRET);
+  if (!env.BG_KV) return '';
+  let k = await env.BG_KV.get('session-key');
+  if (!k) { k = hex(crypto.getRandomValues(new Uint8Array(32))); await env.BG_KV.put('session-key', k); k = (await env.BG_KV.get('session-key')) || k; }
+  return k;
+}
+// The password hash is part of the signed text, so changing the password signs everyone out.
+const sign = async (env, exp, pw) => { const k = await sessionKey(env); return k && pw ? hmac(k, exp + '|' + pw) : ''; };
 async function authed(req, env) {
   const t = cookieOf(req); if (!t) return false;
   const [exp, sig] = t.split('.'); if (!exp || !sig || !(+exp > Date.now())) return false;
-  return same(sig, await hmac('bg-session|' + await passwordHash(env), exp));
+  const want = await sign(env, exp, await passwordHash(env));
+  return !!want && same(sig, want);
 }
 
 // text from the admin may only use these tags; everything else is shown as plain text
@@ -46,6 +58,21 @@ const imageType = b => {
   return null;
 };
 
+// The home page carries the placeholder __ORIGIN__ where link previews (WhatsApp, Instagram, Google) need the full web address.
+// It is filled in with the address the visitor used. If anything goes wrong the page is served as it is.
+async function homePage(req, env, origin) {
+  const r = await env.ASSETS.fetch(req);
+  try {
+    if (r.status !== 200 || !(r.headers.get('Content-Type') || '').includes('text/html')) return r;
+    const h = new Headers(r.headers);
+    h.delete('Content-Length'); h.delete('ETag');
+    return new Response(req.method === 'HEAD' ? null : (await r.clone().text()).split('__ORIGIN__').join(origin), { status: 200, headers: h });
+  } catch (e) {
+    console.error('home page origin fill failed', e);
+    return r;
+  }
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url), p = url.pathname;
@@ -62,7 +89,8 @@ export default {
           return new Response(r.value, { headers: { 'Content-Type': (r.metadata && r.metadata.type) || 'image/jpeg', 'Cache-Control': 'public, max-age=31536000, immutable', 'X-Content-Type-Options': 'nosniff' } });
         }
         if (p === '/api/me') return json(200, { ok: await authed(req, env) });
-        return env.ASSETS.fetch(req);
+        if (p === '/' || p === '/index.html') return await homePage(req, env, /^https:\/\/[\w.-]+$/.test(env.CANONICAL_ORIGIN || '') ? env.CANONICAL_ORIGIN : url.origin);
+        return await env.ASSETS.fetch(req);
       }
       if (req.method === 'POST' && p.startsWith('/api/')) {
         if (req.headers.get('X-Requested-With') !== 'bg') return new Response('Forbidden', { status: 403 });
@@ -73,9 +101,12 @@ export default {
           if (f.n >= 8) return json(429, { ok: false, error: 'Too many tries. Wait 10 minutes.' });
           let b = {}; try { b = JSON.parse((await req.text()).slice(0, 2000) || '{}'); } catch (e) {}
           const want = await passwordHash(env);
-          if (want && same(await sha256(b.password || ''), want)) {
+          if (!want) return json(503, { ok: false, error: 'The admin password is not set up.' });
+          if (same(await sha256(b.password || ''), want)) {
             await env.BG_KV.delete(fk);
-            const exp = Date.now() + 8 * 3600 * 1000, tok = exp + '.' + await hmac('bg-session|' + want, String(exp));
+            const exp = Date.now() + 8 * 3600 * 1000, sig = await sign(env, String(exp), want);
+            if (!sig) return json(503, { ok: false, error: 'Storage is not ready yet. Try again in a minute.' });
+            const tok = exp + '.' + sig;
             return json(200, { ok: true }, { 'Set-Cookie': 'bg_admin=' + tok + '; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=28800' });
           }
           await env.BG_KV.put(fk, JSON.stringify({ n: f.n + 1 }), { expirationTtl: 600 });
@@ -103,7 +134,10 @@ export default {
       }
       return new Response('Not found', { status: 404 });
     } catch (e) {
-      return json(400, { ok: false, error: 'Bad request' });
+      // only broken input is the visitor's fault; anything else is ours and is logged so it shows in the Cloudflare logs
+      if (e instanceof SyntaxError) return json(400, { ok: false, error: 'Bad request' });
+      console.error('worker error', req.method, p, e);
+      return p.startsWith('/api/') ? json(500, { ok: false, error: 'The server could not do that. Try again in a minute.' }) : new Response('Something went wrong. Please reload.', { status: 500 });
     }
   }
 };

@@ -16,3 +16,12 @@ The password hash is in `wrangler.jsonc` (`ADMIN_PASSWORD_HASH`). To change it w
 - `Bio Guard Demo/` also runs locally with Node.js: `node serve.js`, then open http://localhost:5180 and http://localhost:5180/admin (password in `admin-password.txt`, never commit that file).
 - `index.html` (root) is the whole site as a single file for quick previews. It has no admin.
 - `src/` has the editable source (`template.html`, `admin.html`, `atlas.js`) and `build.ps1`, which builds the files above.
+## Checks
+
+- `node worker/test.mjs` runs 64 checks on the admin server code and the opening-hours logic (no Cloudflare account needed).
+- `npx wrangler dev --local` runs the real Worker and the site on this computer.
+
+## Optional Cloudflare settings
+
+- Secret `ADMIN_PASSWORD`: a stronger admin password (wins over the one in `wrangler.jsonc`).
+- Variable `CANONICAL_ORIGIN` (for example `https://bioguard.example`): the one web address search engines and link previews should use, once the site has its own domain.

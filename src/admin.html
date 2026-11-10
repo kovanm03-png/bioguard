@@ -98,7 +98,8 @@ var H={'X-Requested-With':'bg'};
 var $=function(i){return document.getElementById(i)};
 var content={en:{},ckb:{},img:{},gallery:[]},site=null,dirty=false;
 function toast(t){var e=$('toast');e.textContent=t;e.classList.add('show');setTimeout(function(){e.classList.remove('show')},2200)}
-function api(p,body){return fetch(p,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H),body:body}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){j.status=r.status;return j})})}
+function api(p,body){return fetch(p,{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H),body:body}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){j.status=r.status;return j})}).catch(function(){return{ok:false,status:0,error:'Could not reach the website. Check the internet and try again.'}})}
+function why(j,what){return j.status===401?what+' Log in again (reload this page).':(j.error||what+' Try again in a minute.')}
 
 fetch('/api/me').then(function(r){return r.json()}).then(function(j){j.ok?start():$('login').classList.remove('hidden')});
 $('lf').addEventListener('submit',function(e){e.preventDefault();$('err').textContent='';
@@ -112,8 +113,8 @@ function start(){
 function waitSite(){var f=$('site');
  (function poll(){var w=f.contentWindow;if(w&&w.BG_READY&&w.DEF_EN){site=w;build()}else setTimeout(poll,150)})()}
 
-var NAMES={header:'Top menu',about:'About',products:'Products',coaching:'Coaching',story:'Our story',customers:'Customers',contact:'Contact and footer',hero:'Top of the page',gallery:'Gallery (title)',reel:'Instagram video section'};
-function groupOf(el){var s=el.closest('section,header,footer');return !s?'hero':(s.id||(s.tagName==='HEADER'?'header':'hero'))}
+var NAMES={header:'Top menu',goal:'Goal finder',dock:'Phone bar (bottom of the screen)',about:'About',products:'Products',coaching:'Coaching',story:'Our story',customers:'Customers',contact:'Contact and footer',hero:'Top of the page',gallery:'Gallery (title)',reel:'Instagram video section'};
+function groupOf(el){var s=el.closest('section,header,footer,nav.dock');return !s?'hero':(s.id||(s.tagName==='HEADER'?'header':'hero'))}
 
 function build(){
  var d=site.document,seen={},groups={},order=[];
@@ -202,10 +203,10 @@ function upload(id,file,btn){
  .catch(function(){toast('Could not read that photo');btn.disabled=false;btn.textContent='Change photo'})}
 
 $('save').addEventListener('click',function(){
- api('/api/content',JSON.stringify(content)).then(function(j){if(j.ok){dirty=false;toast('Saved. The website is updated.')}else toast('Could not save. Log in again.')})});
+ api('/api/content',JSON.stringify(content)).then(function(j){if(j.ok){dirty=false;toast('Saved. The website is updated.')}else toast(why(j,'Could not save.'))})});
 $('reset').addEventListener('click',function(){
  if(!confirm('Put every text and photo back to the original? This is saved immediately.'))return;
- content={en:{},ckb:{},img:{},gallery:[]};api('/api/content',JSON.stringify(content)).then(function(){build();toast('Everything is back to the original.')})});
+ content={en:{},ckb:{},img:{},gallery:[]};api('/api/content',JSON.stringify(content)).then(function(j){if(j.ok){dirty=false;build();toast('Everything is back to the original.')}else toast(why(j,'Could not reset.'))})});
 window.addEventListener('beforeunload',function(e){if(dirty){e.preventDefault();e.returnValue=''}});
 </script>
 </body>

@@ -10,6 +10,8 @@ $srv=$t.Replace('<!--ADMIN-->',' &middot; <a href="admin" style="color:inherit">
 # the server version uses its own copy of three.js (vendor folder); the single-file version keeps the public CDN
 $srv=$srv.Replace('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js','/vendor/three.module.js').Replace('https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/','/vendor/addons/')
 $sa=$t.Replace('<!--ADMIN-->','')
+# the single file has no web address of its own: drop the lines that need one (link-preview address, canonical, search data)
+$sa=[regex]::Replace($sa,'(?m)^.*__ORIGIN__.*\r?\n','')
 $srv=$srv.Replace('__VID2__','video/story.mp4').Replace('__VID__','video/reel.mp4'); $sa=$sa.Replace('__VID2__','Bio%20Guard%20Demo/video/story.mp4'); $sa=$sa.Replace('__VID__','Bio%20Guard%20Demo/video/reel.mp4')
 foreach($f in Get-ChildItem "$d\Bio Guard Demo\img" -File){
  $mime=switch($f.Extension){'.png'{'image/png'}'.webp'{'image/webp'}default{'image/jpeg'}}
